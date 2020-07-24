@@ -1,0 +1,36 @@
+﻿<Properties StartupConfiguration="{0CD45A86-7354-444C-8A0F-15C36DEE3233}|Default">
+  <MonoDevelop.Ide.ItemProperties.univo PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Usuario/Index.cshtml">
+    <Files>
+      <File FileName="Controllers/RolesController.cs" Line="14" Column="9" />
+      <File FileName="Views/Roles/Index.cshtml" Line="2" Column="25" />
+      <File FileName="Views/Shared/_Layout.cshtml" />
+      <File FileName="Views/Producto/Index.cshtml" />
+      <File FileName="Program.cs" />
+      <File FileName="Controllers/UsuarioController.cs" Line="1" Column="1" />
+      <File FileName="Views/Usuario/Index.cshtml" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="univo" expanded="True">
+            <Node name="univo" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Usuario" expanded="True">
+                  <Node name="Index.cshtml" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

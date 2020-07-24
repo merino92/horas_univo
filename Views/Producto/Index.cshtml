@@ -1,0 +1,59 @@
+﻿
+
+
+@section titulo{
+    <h1>Inventario General</h1>
+}
+
+<div class="col-12">
+    <div class="card ">
+        <div class="card-header">
+            <h5 class="card-title">Listado de Inventario</h5>
+            <button type="button" class="btn btn-success float-right">Nuevo</button>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card bg-light">
+                        <div class="card-body ">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label>Codigo</label>
+                                        <input type="text" class="form-control" id="cbuscar" />
+                                    </div>
+                                </div>
+                                <div class="col-5">
+                                    <div class="form-group">
+                                        <label>Nombre del Producto</label>
+                                        <input type="text" class="form-control" id="pbuscar" />
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                   <div class="form-group">
+                                       <label> </label>
+                                        <button type="button"  class="btn btn-info">Buscar</button>
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Codigo</th>
+                        <th scope="col">Nombre del Producto</th>
+                        <th scope="col">Existencia</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

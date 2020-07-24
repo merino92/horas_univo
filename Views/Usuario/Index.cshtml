@@ -1,0 +1,87 @@
+﻿@section titulo{
+    <h1> Usuarios</h1>
+}
+<div class="col-12">
+    <div class="card ">
+        <div class="card-header">
+            <h5 class="card-title">Listado de Usuarios</h5>
+            <button type="button" id="btnew" class="btn btn-success float-right">Nuevo</button>
+        </div>
+
+        <div class="card-body">
+            <table class="table table-bordered mt-2">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Perfil</th>
+                        <th scope="col">Empleado</th>
+                    </tr>
+                </thead>
+                <tbody id="listado">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> 
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="modal" aria-labelledby="myLargeModalLabel" aria-hidden="false">
+  <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tituloModal">Nuevo Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>Nombres</label>
+                            <input type="text" class="form-control"  id="nombres" placeholder="Nombre del Perfil" />
+                        </div>
+                        <div class="form-group">
+                            <label>Apellidos</label>
+                            <input type="text" class="form-control"  id="apellidos" placeholder="Nombre del Perfil" />
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>Usuario</label>
+                                    <input type="text" class="form-control"  id="usuario" placeholder="" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Clave</label>
+                                    <input type="password" class="form-control"  id="clave" placeholder="" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Repetir Clave</label>
+                                    <input type="password" class="form-control"  id="clave2" placeholder="" />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>Perfil</label>
+                                    <select  class="form-control" id="rol">   
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>     
+            </div> <!--modalbody end-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success btn-sm" >Guardar</button>
+                <button type="button" class="btn btn-warning btn-sm" >Actualizar</button>
+            </div>
+        </div>
+  </div>
+</div> <!--termina el modal-->
+
+
+@section scripts{
+    <script src="~/js/custom/usuario.js"></script>
+
+}
+
