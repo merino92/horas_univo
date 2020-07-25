@@ -5,3 +5,27 @@ input[type="text"] {
   input[type="radio"][disabled]{
     color: blue;
   }
+
+.fondo {
+    background: #001936;
+    
+}
+
+.btnlogin{
+  background-color: #99742e;
+  border-color:#99742e;
+  transition-duration: 0.4s;
+}
+
+.barra{
+  background-color:#001936;
+}
+
+.larga{
+  background-color: #99742e;
+}
+.btnlogin:hover {
+  background-color: #a58d5f; 
+  border-color:#a58d5f; 
+  color: #f0f0f0;
+}

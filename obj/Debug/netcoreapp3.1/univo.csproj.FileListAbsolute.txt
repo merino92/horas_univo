@@ -287,3 +287,4 @@ C:/Users/sismantec/source/repos/univo/obj/Debug/netcoreapp3.1/univo.MvcApplicati
 /Users/merino/Desktop/univo/obj/Debug/netcoreapp3.1/univo.genruntimeconfig.cache
 /Users/merino/Desktop/univo/obj/Debug/netcoreapp3.1/Razor/Views/Roles/Index.cshtml.g.cs
 /Users/merino/Desktop/univo/obj/Debug/netcoreapp3.1/Razor/Views/Usuario/Index.cshtml.g.cs
+/Users/merino/Desktop/univo/obj/Debug/netcoreapp3.1/Razor/Views/Login/Index.cshtml.g.cs

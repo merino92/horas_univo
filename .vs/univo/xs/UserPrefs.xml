@@ -1,24 +1,31 @@
 ﻿<Properties StartupConfiguration="{0CD45A86-7354-444C-8A0F-15C36DEE3233}|Default">
   <MonoDevelop.Ide.ItemProperties.univo PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Usuario/Index.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Login/Index.cshtml">
     <Files>
-      <File FileName="Controllers/RolesController.cs" Line="14" Column="9" />
-      <File FileName="Views/Roles/Index.cshtml" Line="2" Column="25" />
-      <File FileName="Views/Shared/_Layout.cshtml" />
-      <File FileName="Views/Producto/Index.cshtml" />
-      <File FileName="Program.cs" />
-      <File FileName="Controllers/UsuarioController.cs" Line="1" Column="1" />
       <File FileName="Views/Usuario/Index.cshtml" Line="1" Column="1" />
+      <File FileName="Controllers/LoginController.cs" Line="20" Column="1" />
+      <File FileName="Views/Login/Index.cshtml" Line="21" Column="30" />
+      <File FileName="Views/Shared/_Layout.cshtml" Line="262" Column="40" />
+      <File FileName="Startup.cs" Line="81" Column="48" />
+      <File FileName="wwwroot/css/sitio.css" Line="12" Column="5" />
+      <File FileName="wwwroot/css/site.css" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="univo" expanded="True">
             <Node name="univo" expanded="True">
-              <Node name="Controllers" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Usuario" expanded="True">
+                <Node name="Login" expanded="True">
                   <Node name="Index.cshtml" selected="True" />
+                </Node>
+                <Node name="Shared" expanded="True" />
+                <Node name="Usuario" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
+                <Node name="img" expanded="True">
+                  <Node name="admin" expanded="True" />
                 </Node>
               </Node>
             </Node>

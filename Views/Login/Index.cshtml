@@ -1,5 +1,79 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    Layout = null;
 }
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>INLABIE</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/lib/admin/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="~/lib/admin/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/lib/admin/css/adminlte.min.css">
+     <link rel="stylesheet" href="~/css/sitio.css">
+</head>
+<body class="hold-transition  login-page fondo">
+    <div class="login-box">
+        <div class="login-logo">
+            <img src="~/img/admin/logo.png" class="img-round" />
+            
+        </div>
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+                <div class="login-logo">
+                    <a class="text-center" href="../../index2.html"><b>Sistema de Administracion de Laboratorios</b></a>
+                </div>
+                <p class="login-box-msg">Ingresa tus Datos</p>
+
+                <form action="../../index3.html" method="post">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Usuario">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="Password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pb-5">
+                        <!-- /.col -->
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block btnlogin">Ingresar</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+
+                
+            </div>
+            <!-- /.login-card-body -->
+        </div>
+    </div>
+    <!-- /.login-box -->
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/admin/adminlte.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/lib/sweetalert/sweetalert.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+
+</body>
+</html>
