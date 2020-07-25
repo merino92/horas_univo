@@ -42,17 +42,23 @@ namespace univo.custom
 
         public int update(Usuarios data){
             int res =1;
-            var usuario = context.usuarios.Find(data.id);
-            if(usuario !=null){
-                usuario.nombres =data.nombres;
-                usuario.apellidos= data.apellidos;
-                usuario.usuario = data.usuario;
-                usuario.clave = pass.Encrypt(data.clave);
-                usuario.rolid = data.rolid;
-                usuario.borrado = false;
-                context.SaveChanges();
-                res =0;
-            }//existe el usuario a actualizar
+            if(context.usuarios.Where(u => u.usuario == data.usuario && u.id != data.id ).Count()>0){
+                return -1;
+            }else{
+                var usuario = context.usuarios.Find(data.id);
+                if(usuario !=null){
+                    usuario.nombres =data.nombres;
+                    usuario.apellidos= data.apellidos;
+                    usuario.usuario = data.usuario;
+                    if(usuario.clave != data.clave){
+                        usuario.clave = pass.Encrypt(data.clave);
+                    } //valida si se ha cambiado la clave 
+                    usuario.rolid = data.rolid;
+                    usuario.borrado = false;
+                    context.SaveChanges();
+                    res =0;
+                }//existe el usuario a actualizar
+            }
             return res;
         }//actualiza los datos del empleado 
 

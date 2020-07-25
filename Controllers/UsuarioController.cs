@@ -23,14 +23,8 @@ namespace univo.Controllers
         }//instancio la clase en el constructor
         public IActionResult Index()
         {   
-            var h= true;
-            if(h){
-                
-                return RedirectToAction("Index","Roles");
-            }else{
-                return View();
-            }
             
+                return View();
         } 
 
         [HttpGet]
