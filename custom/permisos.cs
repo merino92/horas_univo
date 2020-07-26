@@ -1,23 +1,23 @@
 namespace univo.custom
 {
-    public interface permisos
+    public class permisos
     {
-        int visualizar(){
+        public int visualizar(){
               return 0;
         }
-        int crear(){
+       public  int crear(){
             return 1;
         }
-        int editar(){
+       public  int editar(){
             return 2;
         }
-        int actualizar(){
+        public int actualizar(){
             return 3;
         }
-        int eliminar(){
+        public int eliminar(){
             return 4;
         }
-        int imprimir(){
+        public int imprimir(){
             return 5;
         }
 

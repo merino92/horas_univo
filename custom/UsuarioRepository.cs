@@ -73,6 +73,47 @@ namespace univo.custom
             return res;
         } //borrado logico
 
-        
+        public int  ValidateLogin(string user,string password){
+           
+            var res = context.usuarios.Where(u => u.usuario == user && u.borrado == false).Single();
+            if(res !=null){
+                if(password == pass.Decrypt(res.clave)){
+                    return res.rolid;
+                }else{
+                   return 0;
+                }
+            }else{
+                return 0;
+            }
+        }//valida las credenciales del usuario
+
+        public bool validatePermiss(int modulo,int rol,int permiso){
+            var permisos = context.roles_permisos.Where(rm =>rm.moduloid==modulo && rm.rolid == rol).Single();
+            if(permisos !=null){
+                bool res = false;
+                switch(permiso){
+                    case 0:
+                        res =permisos.visualizar;
+                    break;
+                    case 1:
+                        res =permisos.crear;
+                    break;
+                    case 2:
+                        res = permisos.editar;
+                    break;
+                    case 3:
+                        res = permisos.borrar;
+                    break;
+                    default:
+                        res =permisos.imprimir;
+                    break;                    
+
+                }
+                return res;
+            }else{
+                return false;
+            }
+
+        }
     }
 }

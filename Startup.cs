@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption;
 using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -32,6 +33,7 @@ namespace univo
         {
             string cadena1 = Configuration.GetConnectionString("casa");
             string cadena2 = Configuration.GetConnectionString("trabajo");
+            //double tiempo = Convert.ToDouble(Configuration.GetSection("SessionTime"));
             services.AddDbContext<univoContext>(
               options => options.UseSqlServer(cadena1));
             services.AddDataProtection()
@@ -39,14 +41,25 @@ namespace univo
                
               ValidationAlgorithm = ValidationAlgorithm.HMACSHA256
             }); //algoritmos validos para la encriptacion
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromHours(8.0);
+                options.Cookie.IsEssential = true;
+                options.Cookie.Name = ".UNIVO.lab.session.";
                 
+            });
+    
             services.AddControllersWithViews();
             services.AddScoped<Rolesrepository,Rolesrepository>();
             services.AddScoped<ModulosRepository,ModulosRepository>();
             services.AddScoped<encrypt,encrypt>();
             services.AddScoped<UsuarioRepository,UsuarioRepository>();
             services.AddMvc().AddControllersAsServices();
-            services.AddSession();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSession(); //para utilizar sesiones
+           
             //services.AddScoped<, Hello>();
             
              
@@ -69,7 +82,7 @@ namespace univo
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+             app.UseSession();  //para usar la session
             app.UseRouting();
 
             app.UseAuthorization();

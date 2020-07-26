@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using univo.custom;
 using univo.JsonModel;
@@ -15,15 +16,33 @@ namespace univo.Controllers
 
         private readonly Rolesrepository roles = null; //objecto de la clase repository
         private readonly ModulosRepository modulo = null;
-        public RolesController(Rolesrepository rol ,ModulosRepository mo){
+        private readonly int n_modulo=1;
+        private readonly permisos  permisos = new permisos();
+        private readonly UsuarioRepository user = null;
+        public RolesController(Rolesrepository rol ,ModulosRepository mo,UsuarioRepository us){
             roles = rol;
             modulo= mo;
+         
+            user =us;
         }//asignamos las instancia
         
         // GET: /<controller>/
         public IActionResult Index()
         {   
-            return View();
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("usuario"))){
+                return RedirectToAction("Index","Login");
+            }else{
+                var rol = HttpContext.Session.GetInt32("idrol");
+                
+                if(user.validatePermiss(n_modulo, (int)rol,permisos.visualizar())){
+                    return View();
+                }else{
+                    return RedirectToAction("Index","Home");
+                }   
+                
+            }//valida que exista cesion y que tenga permiso
+        
+            
         }
 
         [HttpGet]

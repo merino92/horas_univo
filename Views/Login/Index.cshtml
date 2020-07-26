@@ -33,9 +33,9 @@
                 </div>
                 <p class="login-box-msg">Ingresa tus Datos</p>
 
-                <form action="../../index3.html" method="post">
+                <form  method="post" asp-controller="Login" asp-action="validar">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Usuario">
+                        <input type="text" class="form-control" name="usuario" placeholder="Usuario">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input type="password" class="form-control" name="clave" placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -53,13 +53,19 @@
                     <div class="row pb-5">
                         <!-- /.col -->
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block btnlogin">Ingresar</button>
+                            <button type="submit" value="validar" class="btn btn-primary btn-block btnlogin">Ingresar</button>
                         </div>
                         <!-- /.col -->
                     </div>
-                </form>
-
-                
+                     @if(ViewBag.error!=null){
+                         <div class="row">
+                             <div class="col-12">
+                                 <h5 class="text-center text-danger">@ViewBag.error</h5>
+                             </div>
+                         </div>
+                         
+                        }
+                </form>                
             </div>
             <!-- /.login-card-body -->
         </div>
@@ -74,6 +80,6 @@
     <!-- AdminLTE App -->
     <script src="~/lib/sweetalert/sweetalert.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-
+   
 </body>
 </html>

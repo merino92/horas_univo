@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using univo.data;
 
 namespace univo.Migrations
 {
     [DbContext(typeof(univoContext))]
-    partial class univoContextModelSnapshot : ModelSnapshot
+    [Migration("20200726020124_cambio_tabla_usuario_campo_clave")]
+    partial class cambio_tabla_usuario_campo_clave
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

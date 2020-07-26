@@ -13,7 +13,8 @@ namespace univo.Models
         public string apellidos { get; set; }
         [StringLength(50)] [Required]
         public string usuario { get; set; }
-        [Column(TypeName = "text")] [Required]
+        
+        [Required]
         public string clave { get; set; }
         public int rolid { get; set; }
         public bool borrado {get;set;}
