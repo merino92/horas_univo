@@ -1,4 +1,8 @@
-﻿@section titulo{
+﻿@section css{
+    <link rel="stylesheet" href="~/css/datatables.min.css">
+}
+
+@section titulo{
     <h1>Roles y Permisos</h1>
 }
 
@@ -11,7 +15,7 @@
 
         <div class="card-body">
             
-            <table class="table table-bordered mt-2">
+            <table id="tabla" class="table table-bordered mt-2">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -53,7 +57,7 @@
           </div>
           <div class="row">
               <div class="col-12">
-                  <table class="table table-bordered table-sm">
+                  <table id="tabla" class="table table-bordered table-sm">
                 <thead class="thead-dark "> 
                     <tr>
                         <th scope="col">Modulo</th>
@@ -74,6 +78,7 @@
 </div>
 
 @section scripts{
+    <script src="~/js/datatables.min.js"></script>
     <script src="~/js/custom/roles.js"></script>
 
 }

@@ -1,5 +1,7 @@
 $(document).ready( function(){
+    
     ListRoles();
+   
     ListarModulos();
     $("#btnew").click(e =>{
         $("#nombre").prop("disabled",false);
@@ -48,16 +50,19 @@ function ListRoles(){
                     html+='<td>'+e.id+'</td>';
                     html+='<td>'+e.rol+'</td>';
                     html+='<td>';
-                    html+='<button type="button" class="btn btn-info btn-sm mr-2" onClick="Mostrar(' + e.id + ',1,' +
-                    "'" + e.rol + "'" + ')" >Mostrar</button>';
-                    html+='<button type="button" class="btn btn-warning btn-sm mr-2" onClick="Mostrar(' + e.id + ',0,' +
-                    "'" + e.rol + "'" + ')" >Editar</button>';
-                    html+='<button type="button" class="btn btn-danger btn-sm" onClick="Eliminar(' + e.id + ',' +
-                    "'" + e.rol + "'" + ')" >Eliminar</button>';
+                    html+='<button type="button" class="btn btn-primary " onClick="Mostrar(' + e.id + ',1,' +
+                    "'" + e.rol + "'" + ')" ><i class="far fa-eye"></i></button>';
+                    html+='<button type="button" class="btn btn-warning ml-1" onClick="Mostrar(' + e.id + ',0,' +
+                    "'" + e.rol + "'" + ')" ><i class="fas fa-edit"></i></button>';
+                    html+='<button type="button" class="btn btn-danger ml-1" onClick="Eliminar(' + e.id + ',' +
+                    "'" + e.rol + "'" + ')" ><i class="far fa-trash-alt"></i></button>';
                     html+='</td>';
                     html+='</tr>';
                 });
                 $("#listado").html(html);
+                $("#tabla").DataTable(
+                    
+                ); //inicializa el plugin
             } //termina else
         }, error: function (xhr, status, error) {
             Swal.close();

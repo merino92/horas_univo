@@ -29,3 +29,7 @@ input[type="text"] {
   border-color:#a58d5f; 
   color: #f0f0f0;
 }
+
+.navbar-light .navbar-nav .nav-link {
+  color: #f8f9fa;
+}
