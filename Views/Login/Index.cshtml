@@ -57,14 +57,7 @@
                         </div>
                         <!-- /.col -->
                     </div>
-                     @if(ViewBag.error!=null){
-                         <div class="row">
-                             <div class="col-12">
-                                 <h5 class="text-center text-danger">@ViewBag.error</h5>
-                             </div>
-                         </div>
-                         
-                        }
+                    
                 </form>                
             </div>
             <!-- /.login-card-body -->
@@ -80,6 +73,23 @@
     <!-- AdminLTE App -->
     <script src="~/lib/sweetalert/sweetalert.min.js"></script>
     <!-- AdminLTE for demo purposes -->
+    <script type="text/javascript">
+    
+        function mostrarAlerta(mensaje){
+             Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia!!',
+                text: mensaje,
+                confirmButtonText: 'Aceptar'
+            });
+        }
+
+         @if(ViewBag.error!=null){
+             @:mostrarAlerta('@ViewBag.error');
+                
+                         
+        }
+    </script>
    
 </body>
 </html>

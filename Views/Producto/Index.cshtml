@@ -9,7 +9,7 @@
     <div class="card ">
         <div class="card-header">
             <h5 class="card-title">Listado de Inventario</h5>
-            <button type="button" class="btn btn-success float-right">Nuevo</button>
+            <button type="button" id="btnew" class="btn btn-success float-right">Nuevo</button>
         </div>
 
         <div class="card-body">
@@ -33,7 +33,7 @@
                                 <div class="col-2">
                                    <div class="form-group">
                                        <label> </label>
-                                        <button type="button"  class="btn btn-info">Buscar</button>
+                                        <button type="button" id="btnbuscar" class="btn btn-info mt-3">Buscar</button>
                                    </div>
                                 </div>
                             </div>
@@ -56,4 +56,82 @@
             </table>
         </div>
     </div>
+</div> 
+
+
+<div class="modal fade bd-example-modal-lg" id="modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+       <div class="modal-header">
+        <h5 class="modal-title" id="titulo">Nuevo Producto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-lg-3 col-md-12 col-sm-12">
+                <div class="form-group">
+                   
+                    <img src="~/img/nodisponible.png"  class="img-thumbnail mt-1" id="img">
+                    <input type="file" class="form-control-file mt-3" id="archivo">
+                </div>
+            </div>
+              <div class="col-lg-9 col-md-12 col-sm-12">
+                  <div class="row">
+                      <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label>Codigo</label>
+                            <input type="text" class="form-control" placeholder="Codigo" id="codigo" />
+                        </div>
+                      </div>
+                  </div>
+               
+                <div class="form-group">
+                   <label>Nombre del Producto</label>
+                   <input type="text" class="form-control" placeholder="Nombre del Producto" id="producto" />
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label>Marca</label>
+                            <input type="text" class="form-control" placeholder="Marca"id="marca" />
+                        </div>
+                    </div>
+                     <div class="col-lg-6 col-md-12 col-sm-12">
+                         <div class="form-group">
+                            <label>Modelo</label>
+                            <input type="text" class="form-control" placeholder="Modelo"id="modelo" />
+                        </div>
+                     </div>
+                </div>
+              </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label for="detalle">Detalle</label>
+                    <textarea class="form-control" id="detalle" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label for="existencia">Existencias</label>
+                    <input type="number" class="form-control" id="existencia" />
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
+
+@section scripts{
+    <script src="~/js/datatables.min.js"></script>
+    <script src="~/js/custom/inventario.js"></script>
+
+}

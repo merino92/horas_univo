@@ -75,7 +75,7 @@ namespace univo.custom
 
         public int  ValidateLogin(string user,string password){
            
-            var res = context.usuarios.Where(u => u.usuario == user && u.borrado == false).Single();
+            var res = context.usuarios.Where(u => u.usuario == user && u.borrado == false).SingleOrDefault();
             if(res !=null){
                 if(password == pass.Decrypt(res.clave)){
                     return res.rolid;
