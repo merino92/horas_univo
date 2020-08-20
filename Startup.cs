@@ -35,7 +35,7 @@ namespace univo
             string cadena2 = Configuration.GetConnectionString("trabajo");
             //double tiempo = Convert.ToDouble(Configuration.GetSection("SessionTime"));
             services.AddDbContext<univoContext>(
-              options => options.UseSqlServer(cadena1));
+              options => options.UseSqlServer(cadena2));
             services.AddDataProtection()
             .UseCryptographicAlgorithms(new AuthenticatedEncryptorConfiguration{
                
@@ -56,6 +56,7 @@ namespace univo
             services.AddScoped<ModulosRepository,ModulosRepository>();
             services.AddScoped<encrypt,encrypt>();
             services.AddScoped<UsuarioRepository,UsuarioRepository>();
+            services.AddScoped<ProductosRepository, ProductosRepository>();
             services.AddMvc().AddControllersAsServices();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSession(); //para utilizar sesiones

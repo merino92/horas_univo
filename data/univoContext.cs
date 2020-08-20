@@ -13,6 +13,8 @@ namespace univo.data
         public DbSet<RolesPermisos> roles_permisos { get; set; }
         public DbSet<Usuarios> usuarios { get; set; }
 
+        public DbSet<Productos> productos { get; set; }
         
+        public DbSet<Movimientos> movimientos { get; set;}
     }
 }
