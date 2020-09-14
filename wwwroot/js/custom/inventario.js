@@ -2,7 +2,7 @@ $(document).ready(e=>{
     $('#btnew').click(e=>{
         $('#modal').modal('show');
     });//muestra el modal
-<<<<<<< HEAD
+
 }); 
 
 
@@ -78,13 +78,9 @@ function createProducto(){
         }); 
     }
 }//crea el producto
-=======
 
-    $('#btnsave').click(e => {
-        add();
-    });
-    showImage();
-}); 
+
+   
 
 
 function validateForm() {
@@ -126,4 +122,4 @@ function add() {
         });
     }
 }
->>>>>>> 68029ef6733b964cafc9f3551ae6f918282ff6ba
+
