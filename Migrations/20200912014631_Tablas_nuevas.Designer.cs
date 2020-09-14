@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using univo.data;
 
 namespace univo.Migrations
 {
     [DbContext(typeof(univoContext))]
-    partial class univoContextModelSnapshot : ModelSnapshot
+    [Migration("20200912014631_Tablas_nuevas")]
+    partial class Tablas_nuevas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -85,29 +87,17 @@ namespace univo.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("Boletasid")
+                        .HasColumnType("int");
+
                     b.Property<int?>("ProductosId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("boletasid")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("borrado")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("cantidad")
-                        .HasColumnType("int");
-
-                    b.Property<int>("iddetalle")
-                        .HasColumnType("int");
-
-                    b.Property<int>("idproducto")
                         .HasColumnType("int");
 
                     b.HasKey("id");
 
-                    b.HasIndex("ProductosId");
+                    b.HasIndex("Boletasid");
 
-                    b.HasIndex("boletasid");
+                    b.HasIndex("ProductosId");
 
                     b.ToTable("boletasdetalles");
                 });
@@ -186,9 +176,6 @@ namespace univo.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("borrado")
-                        .HasColumnType("bit");
 
                     b.Property<string>("concepto")
                         .IsRequired()
@@ -387,13 +374,13 @@ namespace univo.Migrations
 
             modelBuilder.Entity("univo.Models.BoletasDetalles", b =>
                 {
-                    b.HasOne("univo.Models.Productos", "Productos")
+                    b.HasOne("univo.Models.Boletas", null)
+                        .WithMany("boletadetalles")
+                        .HasForeignKey("Boletasid");
+
+                    b.HasOne("univo.Models.Productos", null)
                         .WithMany("boletasdetalles")
                         .HasForeignKey("ProductosId");
-
-                    b.HasOne("univo.Models.Boletas", "boletas")
-                        .WithMany("boletadetalles")
-                        .HasForeignKey("boletasid");
                 });
 
             modelBuilder.Entity("univo.Models.Carreras", b =>

@@ -28,6 +28,8 @@ namespace univo.Models
         public DateTime fecha { get; set; }
         public bool borrado { get; set; }
 
+        public virtual ICollection<BoletasDetalles> boletasdetalles{get;set;}
+        public virtual ICollection<Movimientos> movimientos{get;set;}
 
     }
 }

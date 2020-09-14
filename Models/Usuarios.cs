@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -20,5 +21,8 @@ namespace univo.Models
         public bool borrado {get;set;}
 
         public virtual Roles rol { get; set; }
+
+        public virtual ICollection<Movimientos> movimientos{get;set;}
+        public virtual ICollection<Boletas> boletas{get;set;}
     }
 }
