@@ -19,6 +19,8 @@ namespace univo.data
         public DbSet<Boletas> boletas{get;set;}
         public DbSet<BoletasDetalles> boletasdetalles{get;set;}
 
+        public DbSet<Productos> productos { get; set; }
         
+        public DbSet<Movimientos> movimientos { get; set;}
     }
 }

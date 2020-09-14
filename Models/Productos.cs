@@ -9,10 +9,7 @@ namespace univo.Models
 {
     public class Productos
     {
-        public Productos()
-        {
-            borrado=false;
-        }
+        
         public int Id { get; set; }
         [StringLength(25)] [Required]
         public string codigo { get; set; }
@@ -26,6 +23,7 @@ namespace univo.Models
         public string detalle { get; set; }
         public string imagen { get; set; }
         public DateTime fecha { get; set; }
+        [Required]
         public bool borrado { get; set; }
 
         public virtual ICollection<BoletasDetalles> boletasdetalles{get;set;}

@@ -9,8 +9,8 @@ using univo.data;
 namespace univo.Migrations
 {
     [DbContext(typeof(univoContext))]
-    [Migration("20200723212540_update_usuariostbl")]
-    partial class update_usuariostbl
+    [Migration("20200820153140_inicio")]
+    partial class inicio
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -114,7 +114,7 @@ namespace univo.Migrations
 
                     b.Property<string>("clave")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("nombres")
                         .IsRequired()

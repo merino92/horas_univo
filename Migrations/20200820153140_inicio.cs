@@ -74,8 +74,9 @@ namespace univo.Migrations
                     nombres = table.Column<string>(maxLength: 50, nullable: false),
                     apellidos = table.Column<string>(maxLength: 50, nullable: false),
                     usuario = table.Column<string>(maxLength: 50, nullable: false),
-                    clave = table.Column<string>(type: "text", nullable: false),
-                    rolid = table.Column<int>(nullable: false)
+                    clave = table.Column<string>(nullable: false),
+                    rolid = table.Column<int>(nullable: false),
+                    borrado = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

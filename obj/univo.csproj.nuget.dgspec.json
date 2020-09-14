@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/merino/Desktop/univo/univo.csproj": {}
+    "C:\\Users\\sismantec\\Documents\\horas_univo\\univo.csproj": {}
   },
   "projects": {
-    "/Users/merino/Desktop/univo/univo.csproj": {
+    "C:\\Users\\sismantec\\Documents\\horas_univo\\univo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/merino/Desktop/univo/univo.csproj",
+        "projectUniqueName": "C:\\Users\\sismantec\\Documents\\horas_univo\\univo.csproj",
         "projectName": "univo",
-        "projectPath": "/Users/merino/Desktop/univo/univo.csproj",
-        "packagesPath": "/Users/merino/.nuget/packages/",
-        "outputPath": "/Users/merino/Desktop/univo/obj/",
+        "projectPath": "C:\\Users\\sismantec\\Documents\\horas_univo\\univo.csproj",
+        "packagesPath": "C:\\Users\\sismantec\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sismantec\\Documents\\horas_univo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/merino/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\sismantec\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -63,6 +65,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.3, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[4.7.0, )"
             }
           },
           "imports": [
@@ -83,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.200/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

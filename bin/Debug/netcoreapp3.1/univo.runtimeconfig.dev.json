@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "/Users/merino/.dotnet/store/|arch|/|tfm|",
-      "/Users/merino/.nuget/packages"
+      "C:\\Users\\sismantec\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\sismantec\\.nuget\\packages"
     ]
   }
 }

@@ -187,6 +187,7 @@ namespace univo.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+<<<<<<< HEAD
                     b.Property<bool>("borrado")
                         .HasColumnType("bit");
 
@@ -195,11 +196,14 @@ namespace univo.Migrations
                         .HasColumnType("nvarchar(250)")
                         .HasMaxLength(250);
 
+=======
+>>>>>>> 68029ef6733b964cafc9f3551ae6f918282ff6ba
                     b.Property<string>("documento")
                         .IsRequired()
                         .HasColumnType("nvarchar(25)")
                         .HasMaxLength(25);
 
+<<<<<<< HEAD
                     b.Property<int>("entrada")
                         .HasColumnType("int");
 
@@ -230,6 +234,18 @@ namespace univo.Migrations
 
                     b.HasIndex("usuariosid");
 
+=======
+                    b.Property<DateTime>("fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("usuario")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.HasKey("id");
+
+>>>>>>> 68029ef6733b964cafc9f3551ae6f918282ff6ba
                     b.ToTable("movimientos");
                 });
 
