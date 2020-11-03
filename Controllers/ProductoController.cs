@@ -112,6 +112,7 @@ namespace univo.Controllers
                             codigo=producto.codigo,
                             marca=producto.marca,
                             existencia=producto.existencia,
+                            modelo=producto.modelo,
                             imagen="",
                             detalle=producto.detalle
                     };

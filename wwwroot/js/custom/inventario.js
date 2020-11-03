@@ -1,3 +1,4 @@
+var idglobal=0;
 $(document).ready(e=>{
     $('#btnew').click(e=>{
         $('#btnsave').show();
@@ -7,6 +8,38 @@ $(document).ready(e=>{
     listar();
     $('#btnsave').click(e=>{
         add();
+    }); 
+    $('#btnupdate').click(e=>{
+        if(idglobal>0){
+            if(validateForm()){
+                const datos={
+                    id:parseInt(idglobal),
+                    codigo:$("#codigo").val().trim().toUpperCase(),
+                    nombre:$("#producto").val().trim().toUpperCase(),
+                    marca:$("#marca").val().trim().toUpperCase(),
+                    modelo:$("#modelo").val().trim().toUpperCase(),
+                    detalle:$("#detalle").val().trim().toUpperCase(),
+                    existencia:parseInt($("#existencia").val()),
+                    nombreimagen:"",
+                    imagen:'',
+                };
+                actualizarProducto(datos); 
+            }else{
+                Swal.fire({
+                    icon:'warning',
+                    title:'Advertencia!!',
+                    text:'Campos Obligatorios'
+                });
+            }
+            
+
+        }else{
+            Swal.fire({
+                icon:'warning',
+                title:'Advertencia!!',
+                text:'Error al intentar actualizar'
+            });
+        }
     });
 
 }); 
@@ -223,10 +256,9 @@ const eliminar=(id)=>{
         }
     });
 }//elimina el producto
-var idglobal=0;
+
 const editar = async (id)=>{
     try {
-        
         const respuesta = await axios.get(`/Producto/listbyid/?id=${id}`);
         if(respuesta.status !=200){
             var error="Error al mostrar datos";
@@ -235,6 +267,8 @@ const editar = async (id)=>{
             }   
             throw Error(error);
         }  
+        clear();
+        idglobal=id;
         const datos=respuesta.data.value;
         $('#codigo').val(datos.codigo);
         $('#producto').val(datos.nombre);
@@ -250,5 +284,29 @@ const editar = async (id)=>{
         console.log(error);
     }
 
-}//obtiene los datos del producto
+}//obtiene los datos del producto 
+
+const actualizarProducto= async (datos)=>{
+    try{
+        const respuesta = await axios.put('/Producto/update',datos);
+        if(respuesta.status!=200){
+            var error="Error al actualizar los datos";
+            if(respuesta.data !=null && respuesta.data != undefined ){
+                error=respuesta.data.value.response;
+            }   
+            throw Error(error);
+        }
+        listar();
+        clear();
+        idglobal=0;
+        $('#modal').modal('hide');
+        Swal.fire({
+            icon:'success',
+            title:'Producto Actualizado',
+            text:'El producto fue actualizado'
+        });
+    }catch(error){
+        console.log(error);
+    }
+}//actualiza el producto
 
