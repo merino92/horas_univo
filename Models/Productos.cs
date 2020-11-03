@@ -22,6 +22,8 @@ namespace univo.Models
         [Column(TypeName = "text")]
         public string detalle { get; set; }
         public string imagen { get; set; }
+        [StringLength(50)]
+        public string modelo {get;set;}
         public DateTime fecha { get; set; }
         [Required]
         public bool borrado { get; set; }

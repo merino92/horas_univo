@@ -37,6 +37,7 @@ namespace univo.Controllers
                             nombre=producto.nombre,
                             existencia=producto.existencia,
                             detalle=producto.detalle,
+                            modelo=producto.modelo,
                             imagen=producto.imagen,
                             fecha=DateTime.Now,
                             borrado=false

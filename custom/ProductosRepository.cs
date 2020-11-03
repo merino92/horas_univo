@@ -87,6 +87,7 @@ namespace univo.custom
                         oldproducto.existencia=productos.existencia;
                         oldproducto.detalle=productos.detalle;
                         oldproducto.imagen=productos.imagen;
+                        oldproducto.modelo=productos.modelo;
                         context.SaveChanges();
                         //guardamos los cambios
                         if(oldproducto.existencia!=oldexistencia){

@@ -20,7 +20,7 @@ namespace univo.JsonModel.producto
         public int existencia { get; set; }
        
         public string detalle { get; set; }
-
+        public string modelo {get;set;}
         public string nombreimagen{get;set;}
         public string imagen{get;set;}
 

@@ -176,7 +176,7 @@ function add() {
 const borradologico =(id) =>{
     $.ajax({
         type: 'DELETE',
-        url: '/Producto/delete&id='+id,
+        url: `/Producto/delete/?id=${id}`,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: data => {
@@ -189,6 +189,7 @@ const borradologico =(id) =>{
                     confirmButtonText: 'Aceptar'
                 });
             }else{
+                listar();
                 Swal.fire({
                     icon: 'success',
                     title: 'Exito',
@@ -197,7 +198,7 @@ const borradologico =(id) =>{
                 });
             }
         }, error: error=> {
-            console.log(error);
+            console.log(error.responseJson.value);
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
@@ -222,6 +223,32 @@ const eliminar=(id)=>{
         }
     });
 }//elimina el producto
+var idglobal=0;
+const editar = async (id)=>{
+    try {
+        
+        const respuesta = await axios.get(`/Producto/listbyid/?id=${id}`);
+        if(respuesta.status !=200){
+            var error="Error al mostrar datos";
+            if(respuesta.data !=null && respuesta.data != undefined ){
+                error=respuesta.data.value.response;
+            }   
+            throw Error(error);
+        }  
+        const datos=respuesta.data.value;
+        $('#codigo').val(datos.codigo);
+        $('#producto').val(datos.nombre);
+        $('#marca').val(datos.marca);
+        $('#modelo').val(datos.modelo);
+        $('#existencia').val(datos.existencia);
+        $('#detalle').val(datos.detalle);
+        $('#btnsave').hide();
+        $('#btnupdate').show();
+        $('#modal').modal('show');
+        
+    } catch (error) {
+        console.log(error);
+    }
 
-
+}//obtiene los datos del producto
 
