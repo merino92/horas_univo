@@ -22,7 +22,7 @@ $(document).ready( function(){
 }); //funcion de inicio
 
 function ListRoles(){
-    $("#listado").html(null); //limpia la tabla
+
     $.ajax({
         type: 'GET',
         url: '/Roles/list/',
@@ -35,6 +35,7 @@ function ListRoles(){
            Swal.showLoading();
         },
         success: function (data) {
+            console.log(data);
             Swal.close();
             if(data.request > 0){
                 Swal.fire({
@@ -59,10 +60,9 @@ function ListRoles(){
                     html+='</td>';
                     html+='</tr>';
                 });
+                $("#listado").html(null);
                 $("#listado").html(html);
-                $("#tabla").DataTable(
-                    
-                ); //inicializa el plugin
+               
             } //termina else
         }, error: function (xhr, status, error) {
             Swal.close();
@@ -75,6 +75,30 @@ function ListRoles(){
         }
     }); //termina ajax
 }//lista los roles que existen
+
+/*function ListRoles(){
+    $('#tbl').DataTable({
+        destroy:true,
+        repsonsive:true,
+        ajax:{
+            type: 'GET',
+            url: '/Roles/list/',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: function(r){
+                console.log(r);
+                return JSON.stringify(r);
+                
+            },
+            dataSrc: "r.response"
+        },
+        columns:[
+            {"data":"id"},
+            {"data":"rol"},
+        ],
+       
+    });
+}*/
 function formIsValid(){
     var res = true;
     var nombre =$("#nombre").val();

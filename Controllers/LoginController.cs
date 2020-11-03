@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using univo.custom;
+using univo.JsonModel.usuario;
+using univo.Models;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -26,10 +28,11 @@ namespace univo.Controllers
         [HttpPost]
         public IActionResult validar(string usuario,string clave){
             if(usuario !=null && clave !=null){
-                int res = user.ValidateLogin(usuario.ToUpper(),clave);
-                if(res > 0){
+               Usuarios res = user.ValidateLogin(usuario.ToUpper(),clave);
+                if(res !=null){
                     HttpContext.Session.SetString("usuario",usuario.ToUpper());
-                    HttpContext.Session.SetInt32("idrol",res);
+                    HttpContext.Session.SetInt32("idrol",res.rolid);
+                    HttpContext.Session.SetInt32("idusuario",res.id);
                     //crea la sesion del usuario
                     return RedirectToAction("Index","Home");
                 }else{

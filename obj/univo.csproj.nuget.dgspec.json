@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sismantec\\Documents\\horas_univo\\univo.csproj": {}
+    "/Users/merino/Desktop/univo/univo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sismantec\\Documents\\horas_univo\\univo.csproj": {
+    "/Users/merino/Desktop/univo/univo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sismantec\\Documents\\horas_univo\\univo.csproj",
+        "projectUniqueName": "/Users/merino/Desktop/univo/univo.csproj",
         "projectName": "univo",
-        "projectPath": "C:\\Users\\sismantec\\Documents\\horas_univo\\univo.csproj",
-        "packagesPath": "C:\\Users\\sismantec\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sismantec\\Documents\\horas_univo\\obj\\",
+        "projectPath": "/Users/merino/Desktop/univo/univo.csproj",
+        "packagesPath": "/Users/merino/.nuget/packages/",
+        "outputPath": "/Users/merino/Desktop/univo/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\sismantec\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/merino/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -89,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.200/RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -35,7 +35,7 @@ namespace univo
             string cadena2 = Configuration.GetConnectionString("trabajo");
             //double tiempo = Convert.ToDouble(Configuration.GetSection("SessionTime"));
             services.AddDbContext<univoContext>(
-              options => options.UseSqlServer(cadena2));
+              options => options.UseSqlServer(cadena1));
             services.AddDataProtection()
             .UseCryptographicAlgorithms(new AuthenticatedEncryptorConfiguration{
                

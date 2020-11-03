@@ -1,7 +1,13 @@
 $(document).ready(e=>{
     $('#btnew').click(e=>{
+        $('#btnsave').show();
+        $('#btnupdate').hide();
         $('#modal').modal('show');
     });//muestra el modal
+    listar();
+    $('#btnsave').click(e=>{
+        add();
+    });
 
 }); 
 
@@ -22,6 +28,13 @@ function validateForm(){
     return respuesta;
 }//valida el formulario 
 
+function clear(){
+    var formulario=['codigo','producto','marca','modelo','detalle','existencias'];
+    formulario.forEach(key =>{
+        var id="#"+key;
+       var campo=$('#'+key).val(null)
+    });
+}
 
 function createProducto(){
     if(validateForm){
@@ -32,16 +45,19 @@ function createProducto(){
             marca:$("#marca").val().trim().toUpperCase(),
             modelo:$("#modelo").val().trim().toUpperCase(),
             detalle:$("#detalle").val().trim().toUpperCase(),
-            existencia:parseInt($("#existencias").val())
+            existencia:parseInt($("#existencia").val()),
+            nombreimagen:"",
+            imagen:'',
         };
+        console.log(datos);
         $.ajax({
             type: 'POST',
-            url: '/inventario',
+            url: '/Producto/create',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             data:JSON.stringify(datos),
-            success: function (data) {
-                if(data.request > 0){
+            success: data => {
+                if(data.request <= 0){
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
@@ -49,8 +65,8 @@ function createProducto(){
                         confirmButtonText: 'Aceptar'
                     });
                 }else{
-                    listarUsuarios();
-                    
+                    listar();
+                    $('#modal').modal('hide');
                     Swal.fire({
                         icon: 'success',
                         title: 'Exito!!',
@@ -59,7 +75,8 @@ function createProducto(){
                     });
                 }
     
-            }, error: function (xhr, status, error) {
+            }, error: error=> {
+                console.log(error);
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
@@ -80,7 +97,40 @@ function createProducto(){
 }//crea el producto
 
 
-   
+function listar(){
+    $.ajax({
+        type: 'GET',
+        url: '/Producto/list',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: data => {
+           var productos=data.value;
+           var html=null;
+           productos.forEach(e=>{
+               let row='<tr>';
+                row+='<td>'+e.id+'</td>';
+                row+='<td>'+e.codigo+'</td>';
+                row+='<td>'+e.nombre+'</td>';
+                row+='<td>'+e.existencia+'</td>';
+                row+='<td><button class="btn btn-warning" onclick="editar('+e.id+')" ><i class="fa fa-wrench" aria-hidden="true"></i></button>';
+                row+='<button class="btn btn-danger ml-2" onclick="eliminar('+e.id+')" ><i class="fa fa-trash" aria-hidden="true"></i></button></td>';
+               row+='</tr>';
+               html+=row;
+           });
+           $('#tabla').html(null);
+           $('#tabla').html(html);
+        }, error: error=> {
+            console.log(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: error,
+                confirmButtonText: 'Aceptar'
+
+            });
+        }
+    }); //termina ajax
+}//lista los productos   
 
 
 function validateForm() {
@@ -113,7 +163,7 @@ function showImage() {
 
 function add() {
     if (validateForm()) {
-
+        createProducto();
     } else {
         Swal.fire({
             icon: 'warning',
@@ -121,5 +171,57 @@ function add() {
             text: 'Debes llenar los campos obligatorios'
         });
     }
-}
+} 
+
+const borradologico =(id) =>{
+    $.ajax({
+        type: 'DELETE',
+        url: '/Producto/delete&id='+id,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: data => {
+            var res= data.value;
+            if(res.request >0){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: res.response,
+                    confirmButtonText: 'Aceptar'
+                });
+            }else{
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Exito',
+                    text: "Producto Eliminado",
+                    confirmButtonText: 'Aceptar'
+                });
+            }
+        }, error: error=> {
+            console.log(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: error,
+                confirmButtonText: 'Aceptar'
+            });
+        }
+    }); //termina ajax
+};
+
+
+const eliminar=(id)=>{
+    Swal.fire({
+        icon:'warning',
+        title:'Estas seguro de Eliminar este producto',
+        showCancelButton: true,
+        confirmButtonText:'eliminar',
+        cancelButtonText:'cancelar'
+    }).then((result)=>{
+        if(result.isConfirmed){
+            borradologico(id);
+        }
+    });
+}//elimina el producto
+
+
 

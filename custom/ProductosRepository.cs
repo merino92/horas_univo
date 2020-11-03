@@ -24,6 +24,9 @@ namespace univo.custom
             return context.productos.Where(p=>p.borrado==false).ToList();
         }//retorna el listado de productos
 
+        public Productos listbyid(int id){
+            return context.productos.Find(id);
+        }
         public List<Productos> Buscar(string codigo,string nombre){
             var productos=context.productos.Where(p=>p.codigo.Contains(codigo) || p.nombre.Contains(nombre)).ToList();
             return productos;
@@ -32,16 +35,17 @@ namespace univo.custom
         public int create(Productos producto,int idusuario){
            var existe=context.productos.Where(p=>p.codigo== producto.codigo || p.nombre== producto.nombre).Count();
            if(existe > 0){
-               throw new Exception("Ya existe un producto con un nombre o codigo igual");
+               throw new Exception("El codigo Del Producto Ya Existe");
            }else{
-               using(var transaccion=context.Database.BeginTransaction()){
-                var fecha= DateTime.Now;
-                var newproducto=producto;
-                newproducto.fecha=fecha;
-                context.Add(newproducto);
-                context.SaveChanges();
-                //crea el producto
-                var new_movimiento= new Movimientos{
+                using var transaccion= context.Database.BeginTransaction();
+               try{
+                    var fecha= DateTime.Now;
+                    var newproducto=producto;
+                    newproducto.fecha=fecha;
+                    context.Add(newproducto);
+                    context.SaveChanges(); 
+                    //agregamos el producto
+                    var new_movimiento= new Movimientos{
                     fecha=fecha,
                     documento="",
                     idusuario=idusuario,
@@ -57,8 +61,12 @@ namespace univo.custom
                 //se crea el historial del producto en el movimiento
                 transaccion.Commit();//finaliza transaccion se autoriza
                 return newproducto.Id;
-           }//transaccion
-           }//valida que no exista un producto con el mismo nombre o codigo
+
+               }catch(Exception e){
+                   throw new Exception(e.Message);
+               }
+           }
+
         }//crea el producto y retorna el id 
 
         public void update(Productos productos,int idusuario){

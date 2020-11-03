@@ -73,17 +73,17 @@ namespace univo.custom
             return res;
         } //borrado logico
 
-        public int  ValidateLogin(string user,string password){
+        public Usuarios  ValidateLogin(string user,string password){
            
             var res = context.usuarios.Where(u => u.usuario == user && u.borrado == false).SingleOrDefault();
             if(res !=null){
                 if(password == pass.Decrypt(res.clave)){
-                    return res.rolid;
+                    return res;
                 }else{
-                   return 0;
+                   return res;
                 }
             }else{
-                return 0;
+                return res;
             }
         }//valida las credenciales del usuario
 
