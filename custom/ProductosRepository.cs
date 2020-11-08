@@ -125,6 +125,23 @@ namespace univo.custom
             }
         } //borrado logico del producto
 
+        public List<Productos> search(string codigo,string descripcion){
+            if(codigo!=null && codigo.Length >0){
+                if(descripcion!=null && descripcion.Length>0){
+                     var productos=context.productos.Where(p=>p.codigo.Contains(codigo.ToUpper()) && 
+                                p.nombre.Contains(descripcion.ToUpper()) && p.borrado==false).ToList();
+                                return productos;
+                }else{
+                     var productos=context.productos.Where(p=>p.codigo.Contains(codigo.ToUpper())&& p.borrado==false).ToList();
+                    return productos;
+                }
+               
+            }else{
+                var productos=context.productos.Where(p=>p.nombre.Contains(descripcion.ToUpper())&& p.borrado==false).ToList();
+                return productos;
+            }
+        } //busqueda de producto
+
         /*private bool saveImage(string imagen, string nombre)
         {
             var ruta = _env.WebRootPath;

@@ -76,7 +76,26 @@ namespace univo.Controllers
                  return StatusCode(StatusCodes.Status406NotAcceptable,
                  Json(new error{request=1,response="No se encontro el producto"}));
              }
-        }
+        } 
+        
+        [HttpGet]
+        public IActionResult search([FromQuery(Name="codigo")] string codigo,
+                                    [FromQuery(Name="descripcion")] string descripcion){
+            try{
+                if(codigo!=null || descripcion!=null){
+                    var datos=pr.search(codigo,descripcion);
+                    return StatusCode(StatusCodes.Status202Accepted,
+                                    Json(datos));
+                }else{
+                    return StatusCode(StatusCodes.Status406NotAcceptable,
+                                    Json(new error{request=1,response="Parametros no Validos"}));
+                }      
+            }catch(Exception e){
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                                Json(new error{request=1,response="Ocurrio algo porfavor intenta nuevamente"}));
+            }                            
+                                  
+        }//funcion de filtrado de producto;
 
         [HttpDelete]
         public IActionResult delete([FromQuery(Name = "id")] int id){

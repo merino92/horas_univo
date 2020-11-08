@@ -40,6 +40,16 @@ $(document).ready(e=>{
                 text:'Error al intentar actualizar'
             });
         }
+    }); 
+
+    $('#btnbuscar').click(e=>{
+        const codigo=$('#cbuscar').val();
+        const descripcion=$('#pbuscar').val();
+        if(codigo.length > 0 || descripcion.length > 0){
+            busqueda(codigo,descripcion);
+        }else{
+            listar();
+        }
     });
 
 }); 
@@ -308,5 +318,50 @@ const actualizarProducto= async (datos)=>{
     }catch(error){
         console.log(error);
     }
-}//actualiza el producto
+}//actualiza el producto 
+
+const  busqueda = async (codigo,descripcion)=>{
+    try{
+        const parametros={params:{
+            codigo:codigo.toUpperCase(),
+            descripcion:descripcion.toUpperCase()
+        }};
+        const resultado= await axios.get('/Producto/search',parametros);                   
+        if(resultado.status != 202){
+            throw Error('Error al procesar la respuesta');
+        }                        
+        let datos=resultado.data.value;
+        console.log(datos);
+       armarTabla(datos);                     
+    }catch(error){
+        Swal.fire({
+            icon:'warning',
+            title:'Algo ha ocurrido',
+            text:error
+        });
+    }
+
+}//filtro de busqueda
+
+const armarTabla=(datos)=>{
+    if(datos!=null && datos.length >0){
+            var html='';
+            datos.forEach(e=>{
+                let row='<tr>';
+                row+='<td>'+e.id+'</td>';
+                row+='<td>'+e.codigo+'</td>';
+                row+='<td>'+e.nombre+'</td>';
+                row+='<td>'+e.existencia+'</td>';
+                row+='<td><button class="btn btn-warning" onclick="editar('+e.id+')" ><i class="fa fa-wrench" aria-hidden="true"></i></button>';
+                row+='<button class="btn btn-danger ml-2" onclick="eliminar('+e.id+')" ><i class="fa fa-trash" aria-hidden="true"></i></button></td>';
+               row+='</tr>';
+               html+=row;
+            });
+            $('#tabla').html(null);
+            $('#tabla').html(html);
+    }else{
+        $('#tabla').html(null);
+        $('#tabla').html('<div class="text-center"><h4>No se encontraron resultados</h4></div>');
+    }
+}//arma la tabla de resultados
 
