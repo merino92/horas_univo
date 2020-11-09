@@ -14387,7 +14387,7 @@
         }
       }
     ],
-    "CSharpLanguageVersion": 900
+    "CSharpLanguageVersion": 800
   },
   "RootNamespace": "univo",
   "Documents": [
@@ -14424,6 +14424,11 @@
     {
       "FilePath": "/Users/merino/Desktop/univo/Views/Shared/_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/merino/Desktop/univo/Views/Historial/Index.cshtml",
+      "TargetPath": "Views\\Historial\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
