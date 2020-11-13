@@ -54,8 +54,9 @@ const  busqueda = async (codigo,descripcion)=>{
     }
 
 }//filtro de busqueda 
-
+var idglobal=0;
 const historial= async (id,codigo,nombre)=>{
+    idglobal=id;
     $('#codigo').text(codigo);
     $('#nombre').val(nombre);
     let fecha=moment().format('YYYY-MM-DD');
@@ -66,19 +67,89 @@ const historial= async (id,codigo,nombre)=>{
         let datos={
             params:{
                 id:id,
-                fi:"2020-11-02",
+                fi:fecha,
                 ff:fecha,
                 caso:1
             }
         };
         const respuesta=await axios.get('/Historial/search',datos);
-        console.log(respuesta);
+        if(respuesta.status != 202){
+            throw Error('Error al obtener la informacion intenta nuevamente');
+        }
+        armarResultados(respuesta.data.value);
     }catch(error){
         console.log(error);
     }
 
 };
+const evaluarFiltro=()=>{
+    var fecha_inicio = new Date($('#fi').val());
+    var fecha_fin = new Date($('#ff').val());
+    if(fecha_inicio == fecha_fin){
+        return {
+            id:0,
+            fi:moment($('#fi').val()).format('YYYY-MM-DD'),
+            ff:moment($('#ff').val()).format('YYYY-MM-DD'),
+            caso:1
+        };
+    } else if(fecha_fin > fecha_inicio){
+        return {
+            id:0,
+            fi:moment($('#fi').val()).format('YYYY-MM-DD'),
+            ff:moment($('#ff').val()).format('YYYY-MM-DD'),
+            caso:2
+        };
+    }else{
+        return {
+            id:0,
+            fi:moment($('#fi').val()).format('YYYY-MM-DD'),
+            ff:moment($('#ff').val()).format('YYYY-MM-DD'),
+            caso:1
+        };
+    }
+}; //evalua las fechas para saber que  filtro regresar
+const filtrarHistorial= async ()=>{
+    try{
+        var caso=evaluarFiltro();
+        console.log(caso);
+        caso.id=idglobal;
+        let datos={
+            params:caso
+        };
+        const respuesta=await axios.get('/Historial/search',datos);
+        if(respuesta.status != 202){
+            throw Error('Error al obtener la informacion intenta nuevamente');
+        }
+        armarResultados(respuesta.data.value);
+    }catch(error){
+        console.log(error);
+    }
+};
 
+const armarResultados=(data)=>{
+    var html='';
+    if(data.length > 0){
+        data.forEach(e=>{
+            let fecha=  new Date(e.fecha);
+            let f =moment(fecha).format("MM/DD/YYYY");
+            let data = `<tr class="text-center" onclick="mostrarConcepto(${"'"+e.concepto+"'"})" >`;
+            data+=`<td>${f}</td>`;
+            data+=`<td>${e.documento}</td>`;
+            data+=`<td>${e.idusuario}</td>`;
+            data+=`<td>${e.entrada}</td>`;
+            data+=`<td>${e.salida}</td>`;
+            data+=`<td>${e.saldo}</td>`;
+            data += '</tr>';
+            html+=data;
+        });
+    }
+    $('#thistorial').html(null);
+    $('#thistorial').html(html);
+};//arma la tabla del historial
+
+const mostrarConcepto = (concepto) =>{
+    $('#concepto').val(concepto);
+}; //muestra el concepto del detalle de historial
 $(document).ready(e=>{
     listarProductos();
     $('#btnbuscar').click(e=>{
@@ -89,6 +160,9 @@ $(document).ready(e=>{
         }else{
             listarProductos();
         }
+    });
+    $('#btnfiltrar').click(e=>{
+        filtrarHistorial();
     });
 });
 

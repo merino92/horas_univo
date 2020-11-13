@@ -84,7 +84,7 @@
                        
                             <input type="date" class="form-control" id="ff" />
                             <div class="input-group-append">
-                                <button class="btn btn-info">Buscar</button>
+                                <button  id="btnfiltrar"  class="btn btn-info">Buscar</button>
                             </div>
                        
                   </div>
@@ -101,7 +101,7 @@
           <div class="row">
               <div class="col-12">
                   <div class="table-responsive">
-                      <table class="table table-bordered">
+                      <table class="table table-bordered" style="max-height: 150px;overflow: auto;">
                           <thead>
                               <tr>
                                   <th class="text-center">Fecha</th>
@@ -112,11 +112,14 @@
                                   <th class="text-center">Saldo</th>
                               </tr>
                           </thead>
-                          <tbody id="thistorial"></tbody>
+                          <tbody id="thistorial"  ></tbody>
                       </table>
                   </div>
               </div>
           </div>
+      </div>
+      <div class="modal-footer">
+          <button class="btn btn-danger"><i class="fa fa-file" aria-hidden="true"></i> Imprimir</button>
       </div>
     </div>
   </div>

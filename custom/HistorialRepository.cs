@@ -16,8 +16,8 @@ namespace univo
         } 
 
         public List<Movimientos> filtrarFecha(string fecha,int idproducto){
-            var f=DateTime.Parse(fecha).Date;
-            var datos=context.movimientos.Where(m=>m.fecha.Date == f &&
+            var f=DateTime.Parse(fecha);
+            var datos=context.movimientos.Where(m=>m.fecha.Date == f.Date &&
                                                 m.idproducto== idproducto ).ToList();
             return datos;
         }//retorna los movimientos de un producto en una fecha en especifico
