@@ -436,3 +436,4 @@ C:/Users/sismantec/Documents/horas_univo/obj/Debug/netcoreapp3.1/univo.csproj.Co
 C:/Users/sismantec/Documents/horas_univo/obj/Debug/netcoreapp3.1/univo.MvcApplicationPartsAssemblyInfo.cache
 /Users/merino/Desktop/univo/obj/Debug/netcoreapp3.1/Razor/Views/Historial/Index.cshtml.g.cs
 /Users/merino/Desktop/univo/obj/Debug/netcoreapp3.1/scopedcss/bundle/univo.styles.css
+/Users/merino/Desktop/univo/obj/Debug/netcoreapp3.1/Razor/Views/Movimiento/Index.cshtml.g.cs

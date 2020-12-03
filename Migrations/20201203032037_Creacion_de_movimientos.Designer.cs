@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using univo.data;
 
 namespace univo.Migrations
 {
     [DbContext(typeof(univoContext))]
-    partial class univoContextModelSnapshot : ModelSnapshot
+    [Migration("20201203032037_Creacion_de_movimientos")]
+    partial class Creacion_de_movimientos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

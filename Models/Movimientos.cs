@@ -34,5 +34,6 @@ namespace univo.Models
         public virtual Usuarios usuarios {get;set;}
         [ForeignKey("idproducto")]
         public virtual Productos productos{get;set;}
+        public virtual ICollection<RequisicionDetalles> RequisicionDetalles { get; set; }
     }
 }

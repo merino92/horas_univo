@@ -1,16 +1,22 @@
 ﻿<Properties StartupConfiguration="{0CD45A86-7354-444C-8A0F-15C36DEE3233}|Default">
   <MonoDevelop.Ide.ItemProperties.univo PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Models/Movimientos.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Movimiento/Index.cshtml">
     <Files>
-      <File FileName="Models/Movimientos.cs" Line="1" Column="1" />
+      <File FileName="Models/Requisiciones.cs" Line="22" Column="34" />
+      <File FileName="Models/Roles.cs" Line="16" Column="6" />
+      <File FileName="Models/MovimientoDetalles.cs" Line="18" Column="35" />
+      <File FileName="Views/Movimiento/Index.cshtml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="univo" expanded="True">
             <Node name="univo" expanded="True">
-              <Node name="Models" expanded="True">
-                <Node name="Movimientos.cs" selected="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Movimiento" expanded="True">
+                  <Node name="Index.cshtml" selected="True" />
+                </Node>
+                <Node name="Producto" expanded="True" />
               </Node>
             </Node>
           </Node>

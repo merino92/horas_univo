@@ -33,5 +33,6 @@
     <Folder Include="Views\Roles\" />
     <Folder Include="Views\Usuario\" />
     <Folder Include="Views\Login\" />
+    <Folder Include="Views\Movimiento\" />
   </ItemGroup>
 </Project>
