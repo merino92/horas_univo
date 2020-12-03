@@ -1,32 +1,16 @@
 ﻿<Properties StartupConfiguration="{0CD45A86-7354-444C-8A0F-15C36DEE3233}|Default">
-  <MonoDevelop.Ide.ItemProperties.univo PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Login/Index.cshtml">
+  <MonoDevelop.Ide.ItemProperties.univo PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Models/Movimientos.cs">
     <Files>
-      <File FileName="Views/Usuario/Index.cshtml" Line="1" Column="1" />
-      <File FileName="Controllers/LoginController.cs" Line="20" Column="1" />
-      <File FileName="Views/Login/Index.cshtml" Line="21" Column="30" />
-      <File FileName="Views/Shared/_Layout.cshtml" Line="262" Column="40" />
-      <File FileName="Startup.cs" Line="81" Column="48" />
-      <File FileName="wwwroot/css/sitio.css" Line="12" Column="5" />
-      <File FileName="wwwroot/css/site.css" Line="1" Column="1" />
+      <File FileName="Models/Movimientos.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="univo" expanded="True">
             <Node name="univo" expanded="True">
-              <Node name="Views" expanded="True">
-                <Node name="Login" expanded="True">
-                  <Node name="Index.cshtml" selected="True" />
-                </Node>
-                <Node name="Shared" expanded="True" />
-                <Node name="Usuario" expanded="True" />
-              </Node>
-              <Node name="wwwroot" expanded="True">
-                <Node name="css" expanded="True" />
-                <Node name="img" expanded="True">
-                  <Node name="admin" expanded="True" />
-                </Node>
+              <Node name="Models" expanded="True">
+                <Node name="Movimientos.cs" selected="True" />
               </Node>
             </Node>
           </Node>

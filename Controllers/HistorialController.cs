@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using univo.JsonModel.MovimientoJson;
 using univo.custom;
 using univo.JsonModel;
 using univo.Models;
@@ -27,7 +28,7 @@ namespace univo.Controllers
         public IActionResult search([FromQuery(Name="id")] int id,[FromQuery(Name="fi")] string fi,
                                     [FromQuery(Name="ff")] string ff,[FromQuery(Name="caso")] int caso){
                 if(id >0 && caso >0 && fi.Length > 0 && ff.Length >0){
-                    List<Movimientos> datos=null;
+                    List<MovimientoJson> datos=null;
                     try{
                         switch(caso){
                             case 1:

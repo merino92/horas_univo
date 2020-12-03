@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "kyIm6COSgP0cEV+KRlqN3bTYzGHRmNYQgfmjW+yix5Rzz+CPAWwT1c1xrKs8PYfXXjZo1bY1YqiEsv3JvzCCgg==",
+  "dgSpecHash": "K8drE47QkF7ZjDjERZE66OIWKrGSleZGRVg0VSJjTjTP7rsWaDERKxEc78XzJFzgTdrYN1CZASVEiDUBFySQsw==",
   "success": true,
   "projectFilePath": "/Users/merino/Desktop/univo/univo.csproj",
   "expectedPackageFiles": [
@@ -159,7 +159,8 @@
     "/Users/merino/.nuget/packages/system.xml.readerwriter/4.3.0/system.xml.readerwriter.4.3.0.nupkg.sha512",
     "/Users/merino/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512",
     "/Users/merino/.nuget/packages/system.xml.xmldocument/4.3.0/system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "/Users/merino/.nuget/packages/system.xml.xmlserializer/4.3.0/system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "/Users/merino/.nuget/packages/system.xml.xmlserializer/4.3.0/system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "/Users/merino/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.8/microsoft.aspnetcore.app.ref.3.1.8.nupkg.sha512"
   ],
   "logs": []
 }

@@ -144,7 +144,6 @@ C:/Users/sismantec/source/repos/univo/obj/Debug/netcoreapp3.1/univo.csproj.CoreC
 C:/Users/sismantec/source/repos/univo/obj/Debug/netcoreapp3.1/univo.MvcApplicationPartsAssemblyInfo.cache
 /Users/merino/Desktop/univo/bin/Debug/netcoreapp3.1/appsettings.Development.json
 /Users/merino/Desktop/univo/bin/Debug/netcoreapp3.1/appsettings.json
-/Users/merino/Desktop/univo/bin/Debug/netcoreapp3.1/Properties/launchSettings.json
 /Users/merino/Desktop/univo/bin/Debug/netcoreapp3.1/univo.deps.json
 /Users/merino/Desktop/univo/bin/Debug/netcoreapp3.1/univo.runtimeconfig.json
 /Users/merino/Desktop/univo/bin/Debug/netcoreapp3.1/univo.runtimeconfig.dev.json
@@ -436,3 +435,4 @@ C:/Users/sismantec/Documents/horas_univo/obj/Debug/netcoreapp3.1/univo.genruntim
 C:/Users/sismantec/Documents/horas_univo/obj/Debug/netcoreapp3.1/univo.csproj.CoreCompileInputs.cache
 C:/Users/sismantec/Documents/horas_univo/obj/Debug/netcoreapp3.1/univo.MvcApplicationPartsAssemblyInfo.cache
 /Users/merino/Desktop/univo/obj/Debug/netcoreapp3.1/Razor/Views/Historial/Index.cshtml.g.cs
+/Users/merino/Desktop/univo/obj/Debug/netcoreapp3.1/scopedcss/bundle/univo.styles.css

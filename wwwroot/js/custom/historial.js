@@ -73,6 +73,7 @@ const historial= async (id,codigo,nombre)=>{
             }
         };
         const respuesta=await axios.get('/Historial/search',datos);
+        console.log(respuesta);
         if(respuesta.status != 202){
             throw Error('Error al obtener la informacion intenta nuevamente');
         }
@@ -127,15 +128,16 @@ const filtrarHistorial= async ()=>{
 };
 
 const armarResultados=(data)=>{
+    console.log(data);
     var html='';
     if(data.length > 0){
         data.forEach(e=>{
             let fecha=  new Date(e.fecha);
-            let f =moment(fecha).format("MM/DD/YYYY");
+            let f =moment(fecha).format("DD/MM/YYYY");
             let data = `<tr class="text-center" onclick="mostrarConcepto(${"'"+e.concepto+"'"})" >`;
             data+=`<td>${f}</td>`;
             data+=`<td>${e.documento}</td>`;
-            data+=`<td>${e.idusuario}</td>`;
+            data+=`<td>${e.usuario}</td>`;
             data+=`<td>${e.entrada}</td>`;
             data+=`<td>${e.salida}</td>`;
             data+=`<td>${e.saldo}</td>`;
@@ -150,6 +152,13 @@ const armarResultados=(data)=>{
 const mostrarConcepto = (concepto) =>{
     $('#concepto').val(concepto);
 }; //muestra el concepto del detalle de historial
+
+const imprimirInforme = () =>{
+    const informe = new  jsPDF('p', 'mm', 'letter');
+    informe.autoTable({html:"#tinforme"});
+    informe.save('prueba.pdf');
+
+};
 $(document).ready(e=>{
     listarProductos();
     $('#btnbuscar').click(e=>{
@@ -163,6 +172,9 @@ $(document).ready(e=>{
     });
     $('#btnfiltrar').click(e=>{
         filtrarHistorial();
+    });
+    $('#btnimprimir').click(e=>{
+        imprimirInforme();
     });
 });
 

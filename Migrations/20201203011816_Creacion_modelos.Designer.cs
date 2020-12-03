@@ -10,8 +10,8 @@ using univo.data;
 namespace univo.Migrations
 {
     [DbContext(typeof(univoContext))]
-    [Migration("20200912021727_Tablas_arreglos")]
-    partial class Tablas_arreglos
+    [Migration("20201203011816_Creacion_modelos")]
+    partial class Creacion_modelos
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -87,12 +87,6 @@ namespace univo.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ProductosId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("boletasid")
-                        .HasColumnType("int");
-
                     b.Property<bool>("borrado")
                         .HasColumnType("bit");
 
@@ -107,9 +101,9 @@ namespace univo.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("ProductosId");
+                    b.HasIndex("iddetalle");
 
-                    b.HasIndex("boletasid");
+                    b.HasIndex("idproducto");
 
                     b.ToTable("boletasdetalles");
                 });
@@ -214,23 +208,17 @@ namespace univo.Migrations
                     b.Property<int>("idusuario")
                         .HasColumnType("int");
 
-                    b.Property<int?>("productosId")
-                        .HasColumnType("int");
-
                     b.Property<int>("saldo")
                         .HasColumnType("int");
 
                     b.Property<int>("salida")
                         .HasColumnType("int");
 
-                    b.Property<int?>("usuariosid")
-                        .HasColumnType("int");
-
                     b.HasKey("id");
 
-                    b.HasIndex("productosId");
+                    b.HasIndex("idproducto");
 
-                    b.HasIndex("usuariosid");
+                    b.HasIndex("idusuario");
 
                     b.ToTable("movimientos");
                 });
@@ -263,6 +251,10 @@ namespace univo.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("marca")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("modelo")
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
@@ -312,6 +304,9 @@ namespace univo.Migrations
                     b.Property<bool>("editar")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("idmodulo")
+                        .HasColumnType("int");
+
                     b.Property<bool>("imprimir")
                         .HasColumnType("bit");
 
@@ -326,7 +321,7 @@ namespace univo.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("moduloid");
+                    b.HasIndex("idmodulo");
 
                     b.HasIndex("rolid");
 
@@ -389,13 +384,17 @@ namespace univo.Migrations
 
             modelBuilder.Entity("univo.Models.BoletasDetalles", b =>
                 {
-                    b.HasOne("univo.Models.Productos", "Productos")
-                        .WithMany("boletasdetalles")
-                        .HasForeignKey("ProductosId");
-
                     b.HasOne("univo.Models.Boletas", "boletas")
                         .WithMany("boletadetalles")
-                        .HasForeignKey("boletasid");
+                        .HasForeignKey("iddetalle")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("univo.Models.Productos", "Productos")
+                        .WithMany("boletasdetalles")
+                        .HasForeignKey("idproducto")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("univo.Models.Carreras", b =>
@@ -409,20 +408,22 @@ namespace univo.Migrations
                 {
                     b.HasOne("univo.Models.Productos", "productos")
                         .WithMany("movimientos")
-                        .HasForeignKey("productosId");
+                        .HasForeignKey("idproducto")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("univo.Models.Usuarios", "usuarios")
                         .WithMany("movimientos")
-                        .HasForeignKey("usuariosid");
+                        .HasForeignKey("idusuario")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("univo.Models.RolesPermisos", b =>
                 {
                     b.HasOne("univo.Models.Modulos", "modulo")
                         .WithMany("rolespermisos")
-                        .HasForeignKey("moduloid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("idmodulo");
 
                     b.HasOne("univo.Models.Roles", "rol")
                         .WithMany("rolespermisos")

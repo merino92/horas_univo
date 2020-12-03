@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace univo.Migrations
 {
-    public partial class AgregandoModelo : Migration
+    public partial class Creacion_modelos : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -104,17 +104,18 @@ namespace univo.Migrations
                     crear = table.Column<bool>(nullable: false),
                     editar = table.Column<bool>(nullable: false),
                     borrar = table.Column<bool>(nullable: false),
-                    imprimir = table.Column<bool>(nullable: false)
+                    imprimir = table.Column<bool>(nullable: false),
+                    idmodulo = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_roles_permisos", x => x.id);
                     table.ForeignKey(
-                        name: "FK_roles_permisos_modulos_moduloid",
-                        column: x => x.moduloid,
+                        name: "FK_roles_permisos_modulos_idmodulo",
+                        column: x => x.idmodulo,
                         principalTable: "modulos",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_roles_permisos_roles_rolid",
                         column: x => x.rolid,
@@ -203,25 +204,23 @@ namespace univo.Migrations
                     entrada = table.Column<int>(nullable: false),
                     salida = table.Column<int>(nullable: false),
                     saldo = table.Column<int>(nullable: false),
-                    borrado = table.Column<bool>(nullable: false),
-                    usuariosid = table.Column<int>(nullable: true),
-                    productosId = table.Column<int>(nullable: true)
+                    borrado = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_movimientos", x => x.id);
                     table.ForeignKey(
-                        name: "FK_movimientos_productos_productosId",
-                        column: x => x.productosId,
+                        name: "FK_movimientos_productos_idproducto",
+                        column: x => x.idproducto,
                         principalTable: "productos",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_movimientos_usuarios_usuariosid",
-                        column: x => x.usuariosid,
+                        name: "FK_movimientos_usuarios_idusuario",
+                        column: x => x.idusuario,
                         principalTable: "usuarios",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -233,25 +232,23 @@ namespace univo.Migrations
                     iddetalle = table.Column<int>(nullable: false),
                     idproducto = table.Column<int>(nullable: false),
                     cantidad = table.Column<int>(nullable: false),
-                    borrado = table.Column<bool>(nullable: false),
-                    boletasid = table.Column<int>(nullable: true),
-                    ProductosId = table.Column<int>(nullable: true)
+                    borrado = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_boletasdetalles", x => x.id);
                     table.ForeignKey(
-                        name: "FK_boletasdetalles_productos_ProductosId",
-                        column: x => x.ProductosId,
-                        principalTable: "productos",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_boletasdetalles_boletas_boletasid",
-                        column: x => x.boletasid,
+                        name: "FK_boletasdetalles_boletas_iddetalle",
+                        column: x => x.iddetalle,
                         principalTable: "boletas",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_boletasdetalles_productos_idproducto",
+                        column: x => x.idproducto,
+                        principalTable: "productos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -270,14 +267,14 @@ namespace univo.Migrations
                 column: "usuariosid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_boletasdetalles_ProductosId",
+                name: "IX_boletasdetalles_iddetalle",
                 table: "boletasdetalles",
-                column: "ProductosId");
+                column: "iddetalle");
 
             migrationBuilder.CreateIndex(
-                name: "IX_boletasdetalles_boletasid",
+                name: "IX_boletasdetalles_idproducto",
                 table: "boletasdetalles",
-                column: "boletasid");
+                column: "idproducto");
 
             migrationBuilder.CreateIndex(
                 name: "IX_carreras_facultadesid",
@@ -285,19 +282,19 @@ namespace univo.Migrations
                 column: "facultadesid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_movimientos_productosId",
+                name: "IX_movimientos_idproducto",
                 table: "movimientos",
-                column: "productosId");
+                column: "idproducto");
 
             migrationBuilder.CreateIndex(
-                name: "IX_movimientos_usuariosid",
+                name: "IX_movimientos_idusuario",
                 table: "movimientos",
-                column: "usuariosid");
+                column: "idusuario");
 
             migrationBuilder.CreateIndex(
-                name: "IX_roles_permisos_moduloid",
+                name: "IX_roles_permisos_idmodulo",
                 table: "roles_permisos",
-                column: "moduloid");
+                column: "idmodulo");
 
             migrationBuilder.CreateIndex(
                 name: "IX_roles_permisos_rolid",

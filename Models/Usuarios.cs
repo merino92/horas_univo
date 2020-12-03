@@ -20,6 +20,7 @@ namespace univo.Models
         public int rolid { get; set; }
         public bool borrado {get;set;}
 
+        [ForeignKey("rolid")]
         public virtual Roles rol { get; set; }
 
         public virtual ICollection<Movimientos> movimientos{get;set;}

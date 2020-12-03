@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,6 +14,7 @@ namespace univo.Models
         [StringLength(25)] [Required]
         public string documento { get; set; }
         [Required]
+        
         public int idusuario { get; set; }
         [Required]
         public int idproducto {get; set;}
@@ -28,7 +30,9 @@ namespace univo.Models
         public int saldo {get;set;}
 
         public bool borrado{get;set;}
+        [ForeignKey("idusuario")]
         public virtual Usuarios usuarios {get;set;}
+        [ForeignKey("idproducto")]
         public virtual Productos productos{get;set;}
     }
 }
