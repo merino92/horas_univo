@@ -58,6 +58,7 @@ namespace univo
             services.AddScoped<UsuarioRepository,UsuarioRepository>();
             services.AddScoped<ProductosRepository, ProductosRepository>();
             services.AddScoped<HistorialRepository,HistorialRepository>();
+            services.AddScoped<MovimientoRespository,MovimientoRespository>();
             services.AddMvc().AddControllersAsServices();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSession(); //para utilizar sesiones
