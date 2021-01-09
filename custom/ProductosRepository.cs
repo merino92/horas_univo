@@ -63,6 +63,7 @@ namespace univo.custom
                 return newproducto.Id;
 
                }catch(Exception e){
+                   transaccion.Rollback();
                    throw new Exception(e.Message);
                }
            }
@@ -109,6 +110,7 @@ namespace univo.custom
                     }
                  }   
             }else{
+            
                 throw new Exception("Error al actualizar el producto no se encontro");
             }
 

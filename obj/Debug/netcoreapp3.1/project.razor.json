@@ -14437,6 +14437,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/Users/merino/Desktop/univo/Views/Boleta/Index.cshtml",
+      "TargetPath": "Views\\Boleta\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/merino/Desktop/univo/Views/Usuario/Index.cshtml",
       "TargetPath": "Views\\Usuario\\Index.cshtml",
       "FileKind": "mvc"

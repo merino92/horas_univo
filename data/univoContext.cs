@@ -20,6 +20,9 @@ namespace univo.data
         public DbSet<BoletasDetalles> boletasdetalles{get;set;}
         public DbSet<Requisiciones> requisiciones{get;set;}
         public DbSet<RequisicionDetalles> requisiciondetalles{get;set;}
+        public DbSet<Boletacarreras> boletacarreras{get;set;}
+        public DbSet<Materias> materias{get;set;}
+        public DbSet<Boletamaterias> boletamaterias{get;set;}
         
 
     }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using univo.data;
 
 namespace univo.Migrations
 {
     [DbContext(typeof(univoContext))]
-    partial class univoContextModelSnapshot : ModelSnapshot
+    [Migration("20201226220455_Creacion_de_tablas_bolesta")]
+    partial class Creacion_de_tablas_bolesta
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,7 +43,7 @@ namespace univo.Migrations
 
                     b.HasIndex("idcarrera");
 
-                    b.ToTable("boletacarreras");
+                    b.ToTable("Boletacarreras");
                 });
 
             modelBuilder.Entity("univo.Models.Boletamaterias", b =>
@@ -66,7 +68,7 @@ namespace univo.Migrations
 
                     b.HasIndex("idmateria");
 
-                    b.ToTable("boletamaterias");
+                    b.ToTable("Boletamaterias");
                 });
 
             modelBuilder.Entity("univo.Models.Boletas", b =>
@@ -81,11 +83,6 @@ namespace univo.Migrations
 
                     b.Property<int?>("carrerasid")
                         .HasColumnType("int");
-
-                    b.Property<string>("codigo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
 
                     b.Property<string>("detalle")
                         .IsRequired()
@@ -108,9 +105,6 @@ namespace univo.Migrations
 
                     b.Property<int>("idusuario")
                         .HasColumnType("int");
-
-                    b.Property<bool>("parcial")
-                        .HasColumnType("bit");
 
                     b.Property<int?>("usuariosid")
                         .HasColumnType("int");
@@ -216,7 +210,7 @@ namespace univo.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("materias");
+                    b.ToTable("Materias");
                 });
 
             modelBuilder.Entity("univo.Models.Modulos", b =>

@@ -8438,7 +8438,7 @@
       "outputPath": "/Users/merino/Desktop/univo/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/merino/.config/NuGet/NuGet.Config"
+        "/Users/merino/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"

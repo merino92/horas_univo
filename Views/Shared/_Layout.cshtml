@@ -84,11 +84,43 @@
                         <!-- Add icons to the links using the .nav-icon class
                              with font-awesome or any other icon font library -->
                        <li class="nav-item">
-                                    <a href="@Url.Action("Index","Home")" class="nav-link">
-                                        <i class="fas fa-home "></i>
-                                        <p>Inicio</p>
+                            <a href="@Url.Action("Index","Home")" class="nav-link">
+                                <i class="fas fa-home "></i>
+                                <p>Inicio</p>
+                            </a>
+                        </li> 
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                               <i class="fa fa-id-card" aria-hidden="true"></i>
+                                <p>Administracion
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Index","Producto")" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Materias</p>
                                     </a>
-                                </li>      
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Index","Boleta")" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Boletas</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Index","Producto")" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Devoluciones</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>     
                        <li class="nav-item has-treeview">
                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>

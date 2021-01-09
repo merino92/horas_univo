@@ -81,7 +81,7 @@ namespace univo.custom
 
         } //retorna el detalle de la requisicion
 
-        public int createEntrada(MovimientoAdd detalle,int idusuario){
+        /*public int createEntrada(MovimientoAdd detalle,int idusuario){
             DateTime fecha= DateTime.Now;
             using(var transaccion = context.Database.BeginTransaction()){
                 try
@@ -123,7 +123,7 @@ namespace univo.custom
                     throw;
                 }
             }
-        }//crea la requisicion
+        }//crea la requisicion*/
 
 
     }

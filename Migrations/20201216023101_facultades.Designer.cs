@@ -3,71 +3,23 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using univo.data;
 
 namespace univo.Migrations
 {
     [DbContext(typeof(univoContext))]
-    partial class univoContextModelSnapshot : ModelSnapshot
+    [Migration("20201216023101_facultades")]
+    partial class facultades
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("univo.Models.Boletacarreras", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("borrado")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("idboleta")
-                        .HasColumnType("int");
-
-                    b.Property<int>("idcarrera")
-                        .HasColumnType("int");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("idboleta");
-
-                    b.HasIndex("idcarrera");
-
-                    b.ToTable("boletacarreras");
-                });
-
-            modelBuilder.Entity("univo.Models.Boletamaterias", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("borrado")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("idboleta")
-                        .HasColumnType("int");
-
-                    b.Property<int>("idmateria")
-                        .HasColumnType("int");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("idboleta");
-
-                    b.HasIndex("idmateria");
-
-                    b.ToTable("boletamaterias");
-                });
 
             modelBuilder.Entity("univo.Models.Boletas", b =>
                 {
@@ -82,15 +34,9 @@ namespace univo.Migrations
                     b.Property<int?>("carrerasid")
                         .HasColumnType("int");
 
-                    b.Property<string>("codigo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
-
                     b.Property<string>("detalle")
                         .IsRequired()
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
+                        .HasColumnType("text");
 
                     b.Property<bool>("devuelto")
                         .HasColumnType("bit");
@@ -106,11 +52,19 @@ namespace univo.Migrations
                     b.Property<DateTime>("fecha")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("idcarrera")
+                        .HasColumnType("int");
+
+                    b.Property<int>("idfacultad")
+                        .HasColumnType("int");
+
                     b.Property<int>("idusuario")
                         .HasColumnType("int");
 
-                    b.Property<bool>("parcial")
-                        .HasColumnType("bit");
+                    b.Property<string>("materia")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(250)")
+                        .HasMaxLength(250);
 
                     b.Property<int?>("usuariosid")
                         .HasColumnType("int");
@@ -197,26 +151,6 @@ namespace univo.Migrations
                     b.HasKey("id");
 
                     b.ToTable("facultades");
-                });
-
-            modelBuilder.Entity("univo.Models.Materias", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("borrado")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("materia")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
-
-                    b.HasKey("id");
-
-                    b.ToTable("materias");
                 });
 
             modelBuilder.Entity("univo.Models.Modulos", b =>
@@ -497,40 +431,10 @@ namespace univo.Migrations
                     b.ToTable("usuarios");
                 });
 
-            modelBuilder.Entity("univo.Models.Boletacarreras", b =>
-                {
-                    b.HasOne("univo.Models.Boletas", "boletas")
-                        .WithMany("boletacarreras")
-                        .HasForeignKey("idboleta")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("univo.Models.Carreras", "carreras")
-                        .WithMany("boletacarreras")
-                        .HasForeignKey("idcarrera")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("univo.Models.Boletamaterias", b =>
-                {
-                    b.HasOne("univo.Models.Boletas", "boletas")
-                        .WithMany("boletamaterias")
-                        .HasForeignKey("idboleta")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("univo.Models.Materias", "materias")
-                        .WithMany("boletamaterias")
-                        .HasForeignKey("idmateria")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("univo.Models.Boletas", b =>
                 {
                     b.HasOne("univo.Models.Carreras", "carreras")
-                        .WithMany()
+                        .WithMany("boletas")
                         .HasForeignKey("carrerasid");
 
                     b.HasOne("univo.Models.Facultades", "facultades")
