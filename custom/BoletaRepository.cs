@@ -16,19 +16,22 @@ namespace univo.custom
             string format = fecha.ToString("yyyyMMddHHmmss");
             return (Convert.ToString(boletaid)+format);
         }//retorna el codigo autogenerado
-        public int create(boletajson boleta){
+        /*public int create(boletajson bo,int idusuario){
             try{
                 DateTime fecha = DateTime.Now;
                 using(var transaccion=context.Database.BeginTransaction()){
                     var boleta = new Boletas{
                         fecha= fecha,
                         codigo="",
-                        idusuario=idusuario
+                        idusuario=idusuario,
+                        encargado=bo.encargado,
+                        detalle=bo.detalle,
+
                     };
                 }
             }catch(Exception e){
-                
+                throw new Exception(e.Message);
             }
-        }
+        }*/
     }
 }
