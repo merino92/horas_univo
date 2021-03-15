@@ -155,7 +155,13 @@ const mostrarConcepto = (concepto) =>{
 
 const imprimirInforme = () =>{
     const informe = new  jsPDF('p', 'mm', 'letter');
-    informe.autoTable({html:"#tinforme"});
+    informe.text('Movimientos de Inventario',15,7);
+    informe.text($('#nombre').val(),5,14);
+    informe.autoTable({
+        html:"#tinforme",
+        margin:{top:21}
+    });
+    
     informe.save('prueba.pdf');
 
 };
