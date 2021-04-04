@@ -1,0 +1,88 @@
+
+
+
+@section titulo{
+    <h1>Materias</h1>
+}
+
+<div class="col-12">
+    <div class="card ">
+        <div class="card-header">
+            <h5 class="card-title">Listado de Materias</h5>
+            <button type="button" id="btnew" class="btn btn-success float-right"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</button>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card bg-light">
+                        <div class="card-body ">
+                            <div class="row">
+                                
+                                <div class="col-5">
+                                    <div class="form-group">
+                                        <label>Nombre de la Materia</label>
+                                        <input type="text" class="form-control form-control-sm" id="mbuscar" />
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                   <div class="form-group">
+                                       <label> </label>
+                                        <button type="button" id="btnbuscar" class="btn btn-info mt-3">Buscar</button>
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre de la Materia</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> 
+
+
+<div class="modal fade bd-example-modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+       <div class="modal-header">
+        <h5 class="modal-title" id="titulo">Nuevo Materia</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         
+          <div class="row">
+              <div class="col-12">
+                  <div class="form-group">
+                      <label for="materia">Nombre de la materia</label>
+                      <input type="text" id="materia" class="form-control form-control-sm" placeholder="Nombre" />
+                  </div>
+              </div>
+          </div>
+          
+       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-success" id="btnsave"><i class="fa fa-plus-circle" aria-hidden="true"></i> Guardar</button>
+          <button type="button" class="btn btn-sm btn-warning" id="btnupdate"><i class="fa fa-retweet" aria-hidden="true"></i> Actualizar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+@section scripts{
+    <script src="~/js/datatables.min.js"></script>
+    <script src="~/js/custom/materia.js"></script>
+
+}

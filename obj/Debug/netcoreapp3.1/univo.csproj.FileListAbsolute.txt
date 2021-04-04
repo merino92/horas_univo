@@ -438,3 +438,4 @@ C:/Users/sismantec/Documents/horas_univo/obj/Debug/netcoreapp3.1/univo.MvcApplic
 /Users/merino/Desktop/univo/obj/Debug/netcoreapp3.1/scopedcss/bundle/univo.styles.css
 /Users/merino/Desktop/univo/obj/Debug/netcoreapp3.1/Razor/Views/Movimiento/Index.cshtml.g.cs
 /Users/merino/Desktop/univo/obj/Debug/netcoreapp3.1/Razor/Views/Boleta/Index.cshtml.g.cs
+/Users/merino/Desktop/univo/obj/Debug/netcoreapp3.1/Razor/Views/Materia/Index.cshtml.g.cs

@@ -28,8 +28,27 @@ namespace univo.Controllers
         [HttpGet]
         public IActionResult getId([FromQuery(Name="id")] int id){
             var materia =context.materias.Find(id);
-            return StatusCode(StatusCodes.Status200OK,Json(materia));
+            if(materia !=null){
+                return StatusCode(StatusCodes.Status200OK,Json(materia));
+            }else{
+                var mensaje = new Dictionary<string,string>();
+                mensaje.Add("mensaje","materia no encontrada");
+                return StatusCode(StatusCodes.Status404NotFound,Json(mensaje));
+            }
+            
         }//obtiene por id 
+
+        [HttpGet]
+        public IActionResult search([FromQuery(Name="busqueda")] string busqueda ){
+            if(busqueda.Length >0){
+                var materias =context.materias.Where(m=>m.materia.Contains(busqueda) && m.borrado==false).ToList();
+                return StatusCode(StatusCodes.Status200OK,Json(materias));
+            }else{
+                var mensaje = new Dictionary<string,string>();
+                mensaje.Add("mensaje","parametros invalidos");
+                return StatusCode(StatusCodes.Status400BadRequest,Json(mensaje));
+            }
+        }
 
         [HttpPost]
         public IActionResult create([FromBody] Materias materia){
@@ -100,8 +119,8 @@ namespace univo.Controllers
                     mensaje.Add("mensaje","materia eliminada");
                     return StatusCode(StatusCodes.Status200OK,Json(mensaje));
                 }else{
-                    mensaje.Add("mensaje","materia actualizada");
-                    return StatusCode(StatusCodes.Status200OK,Json(mensaje));
+                    mensaje.Add("mensaje","error al eliminar materia");
+                    return StatusCode(StatusCodes.Status400BadRequest,Json(mensaje));
                 }
             }else{
                 var mensaje = new Dictionary<string,string>();
