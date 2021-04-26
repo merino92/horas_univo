@@ -1,29 +1,86 @@
 using Microsoft.AspNetCore.DataProtection;
+using System;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace univo.custom
 {   
   
     public class encrypt
     {
-        private readonly IDataProtectionProvider _dataProtectionProvider;
-       private const string Key = "autogenerado12342434-0_"; //clave de encriptacion
+       
+       private const string Keystring = "E546C8DF278CD5931069B522E695D4F2"; //clave de encriptacion
 
        public encrypt(IDataProtectionProvider dataProtectionProvider)
        {
-           _dataProtectionProvider = dataProtectionProvider;
+           
        }
 
-       public string Encrypt(string input)
-       {
-           var protector = _dataProtectionProvider.CreateProtector(Key);
-           return protector.Protect(input);
-       } //retornar el string encriptado
+        public  string Encrypt(string text)
+        {
+            var key = Encoding.UTF8.GetBytes(encrypt.Keystring);
 
-       public string Decrypt(string cipherText)
-       {
-           var protector = _dataProtectionProvider.CreateProtector(Key);
-           return protector.Unprotect(cipherText);
-       }//retorna el string desencriptado
+            using (var aesAlg = Aes.Create())
+            {
+                using (var encryptor = aesAlg.CreateEncryptor(key, aesAlg.IV))
+                {
+                    using (var msEncrypt = new MemoryStream())
+                    {
+                        using (var csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                        using (var swEncrypt = new StreamWriter(csEncrypt))
+                        {
+                            swEncrypt.Write(text);
+                        }
+
+                        var iv = aesAlg.IV;
+
+                        var decryptedContent = msEncrypt.ToArray();
+
+                        var result = new byte[iv.Length + decryptedContent.Length];
+
+                        Buffer.BlockCopy(iv, 0, result, 0, iv.Length);
+                        Buffer.BlockCopy(decryptedContent, 0, result, iv.Length, decryptedContent.Length);
+
+                        return Convert.ToBase64String(result);
+                    }
+                }
+            }
+        }
+
+        public  string Decrypt(string cipherText)
+        {
+            var fullCipher = Convert.FromBase64String(cipherText);
+
+            var iv = new byte[16];
+            var cipher = new byte[16];
+
+            Buffer.BlockCopy(fullCipher, 0, iv, 0, iv.Length);
+            Buffer.BlockCopy(fullCipher, iv.Length, cipher, 0, iv.Length);
+            var key = Encoding.UTF8.GetBytes(encrypt.Keystring);
+
+            using (var aesAlg = Aes.Create())
+            {
+                using (var decryptor = aesAlg.CreateDecryptor(key, iv))
+                {
+                    string result;
+                    using (var msDecrypt = new MemoryStream(cipher))
+                    {
+                        using (var csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                        {
+                            using (var srDecrypt = new StreamReader(csDecrypt))
+                            {
+                                result = srDecrypt.ReadToEnd();
+                            }
+                        }
+                    }
+
+                    return result;
+                }
+            }
+        }
+
+
     }
 
 
