@@ -74,8 +74,23 @@ namespace univo.Controllers
                 return StatusCode(StatusCodes.Status400BadRequest,Json(mensaje));
 
             }
-        }//busca por codigo
+        }//busca por codigo 
 
+        [HttpGet]
+        public IActionResult listarFacultades()
+        {
+            var falcutades = context.facultades.Where(f => f.borrado == false).ToList();
+            return StatusCode(StatusCodes.Status200OK, Json(falcutades));
+        }
+
+        [HttpGet]
+        public IActionResult listarCarreras()
+        {
+            var carreras = context.carreras.Where(c => c.borrado == false).ToList();
+            return StatusCode(StatusCodes.Status200OK, Json(carreras));
+        }
+
+        
 
     }
 }

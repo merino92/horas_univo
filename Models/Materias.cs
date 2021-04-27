@@ -7,10 +7,12 @@ namespace univo.Models
     {
         [Key]
         public int id {get;set;}
+       
         [StringLength(100)] [Required]
         public string materia {get;set;}
 
         public bool borrado {get;set;}
+       
         public ICollection<Boletamaterias> boletamaterias {get;set;}
             
     }
