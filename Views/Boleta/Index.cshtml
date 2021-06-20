@@ -1,5 +1,7 @@
 ﻿
-
+@section css{
+    <link rel="stylesheet" href="~/css/tablaslide.css">
+}
 
 @section titulo{
     <h1>Administracion de Boletas</h1>
@@ -27,7 +29,7 @@
                                 <div class="col-5">
                                     <div class="form-group">
                                         <label>fecha</label>
-                                        <input type="date" class="form-control form-control-sm" id="fecha" />
+                                        <input type="date" class="form-control form-control-sm" id="fbuscar" />
                                     </div>
                                 </div>
                                 <div class="col-2">
@@ -75,11 +77,18 @@
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                         <div class="form-group">
+                            <label>N° de Boleta</label>
+                            <h5 class="text-dark" id="nboleta"></h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="form-group">
                             <label>Fecha</label>
-                            <input type="date" class="form-control form-control-sm"  id="fecha" />
+                            <input type="date" class="form-control form-control-sm" id="fecha" />
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
 
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12">
@@ -88,26 +97,57 @@
                             <select id="facultad" class="form-control"></select>
                         </div>
                     </div>
+=======
+                <div class="row">
+>>>>>>> d10db13464fc6568da93c45dc74596be48baf766
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="form-group">
                             <label>Encargado</label>
                             <input type="text" class="form-control form-control-sm" placeholder="encargado" id="encargado" />
                         </div>
                     </div>
-                </div>
-                <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <div class="table-responsive">
-                            <table class="table table-sm table-bordered table-hover">
+                        <div class="table-responsive mt-2">
+                            <table class="table table-sm table-bordered table-hover fixed_header">
                                 <thead>
-                                    <th>Nombre de Materia</th>
-                                    <th>Opciones</th>
+                                    <tr>
+                                        <th>Facultades</th>
+                                        <th><i class="nav-icon fas fa-wrench"></i></th>
+                                    </tr>
                                 </thead>
-                                <tbody id="tmaterias"></tbody>
+                                <tbody id="tfacultad"></tbody>
                             </table>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-12">
+                        <button type="button" class="btn btn-success" id="btnfacultadadd">Agregar</button>
+                    </div>
+                </div>
+                <div class="row">
+<<<<<<< HEAD
+=======
+
+>>>>>>> d10db13464fc6568da93c45dc74596be48baf766
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="table-responsive">
+                            <table class="table table-sm table-bordered table-hover fixed_header">
+                                <thead>
+<<<<<<< HEAD
+                                    <th>Nombre de Materia</th>
+                                    <th>Opciones</th>
+=======
+                                    <tr>
+                                        <th>Carreras</th>
+                                        <th><i class="nav-icon fas fa-wrench"></i></th>
+                                    </tr>
+>>>>>>> d10db13464fc6568da93c45dc74596be48baf766
+                                </thead>
+                                <tbody id="tcarreras"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12">
+<<<<<<< HEAD
                         <button type="button" class="btn btn-info" id="btnmateriadd">Agregar</button>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -123,31 +163,42 @@
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-12">
                         <button type="button" class="btn btn-info" id="btncarreraadd">Agregar</button>
+=======
+                        <button type="button" class="btn btn-success" id="btncarreradd">Agregar</button>
+>>>>>>> d10db13464fc6568da93c45dc74596be48baf766
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-2">
-                        <div class="form-group">
-                            <label>Codigo</label>
-                            <input type="text" class="form-control form-control-sm" id="descripcion">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="table-responsive">
+                            <table class="table table-sm table-bordered table-hover fixed_header">
+                                <thead>
+                                    <tr>
+                                        <th>Materias</th>
+                                        <th><i class="nav-icon fas fa-wrench"></i></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tmateria"></tbody>
+                            </table>
                         </div>
                     </div>
-                    <div class="col-sm-12 col-md-6 col-lg-2">
-                       <button type="button" class="btn btn-success">Agregar</button>
+                    <div class="col-lg-2 col-md-2 col-sm-12">
+                        <button type="button" class="btn btn-success" id="btnmateriadd">Agregar</button>
                     </div>
                 </div>
+
+               
+
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <label>Detalle de boleta</label>
                         <div class="table-responsive">
                             <table class="table table-bordered table-sm">
                                 <thead>
-                                <tr>
-                                    <th>Cantidad</th>
-                                    <th>Codigo</th>
-                                    <th>Nombre del Material</th>
-                                    <th>Opciones</th>
-                                </tr>
+                                    <tr>
+                                        <th>Cantidad</th>
+                                        <th>Codigo</th>
+                                        <th>Nombre del Material</th>
+                                        <th>Opciones</th>
+                                    </tr>
                                 </thead>
                                 <tbody id="cuerpo"></tbody>
                             </table>
@@ -163,6 +214,7 @@
     </div>
 </div>
 
+<<<<<<< HEAD
 <div class="modal" id="modalmateria" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
@@ -221,4 +273,74 @@
 @section scripts{
     <script src="~/js/custom/boleta.js?v=1"></script>
   
+=======
+<div class="modal fade" id="modaldata" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Materias</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>Facultades</label>
+                            <table class="table table-sm table-bordered">
+                                <thead id="mencabezado">
+                                <th>Nombre de Facultad</th>
+                                </thead>
+                                <tbody id="detalletbl"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalinventario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Listado de Materiales</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                       
+                            
+                            <table class="table table-sm table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Codigo</th>
+                                       <th>Nombre</th>
+                                        <th>Existencia</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="inventariotbl"></tbody>
+                            </table>
+                       
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/js/datatables.min.js"></script>
+    <script src="~/lib/axios/axios.js"></script>
+    <script src="~/js/custom/boleta.js"></script>
+
+
+>>>>>>> d10db13464fc6568da93c45dc74596be48baf766
 }
