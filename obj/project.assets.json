@@ -8426,31 +8426,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jose.merino\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "/Users/merino/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jose.merino\\Source\\Repos\\merino92\\horas_univo\\univo.csproj",
+      "projectUniqueName": "/Users/merino/Desktop/univo/univo.csproj",
       "projectName": "univo",
-      "projectPath": "C:\\Users\\jose.merino\\Source\\Repos\\merino92\\horas_univo\\univo.csproj",
-      "packagesPath": "C:\\Users\\jose.merino\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jose.merino\\Source\\Repos\\merino92\\horas_univo\\obj\\",
+      "projectPath": "/Users/merino/Desktop/univo/univo.csproj",
+      "packagesPath": "/Users/merino/.nuget/packages/",
+      "outputPath": "/Users/merino/Desktop/univo/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\jose.merino\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/merino/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -8512,6 +8505,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[3.1.8, 3.1.8]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -8520,7 +8519,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.100/RuntimeIdentifierGraph.json"
       }
     }
   }

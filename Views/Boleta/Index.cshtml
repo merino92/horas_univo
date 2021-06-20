@@ -72,8 +72,11 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                        <h3 id="boletaCodigo"></h3>
+                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <label>Fecha</label>
+                            <input type="date" class="form-control form-control-sm" id="fecha" />
+                        </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                         <div class="form-group">
@@ -81,38 +84,21 @@
                             <h5 class="text-dark" id="nboleta"></h5>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <div class="form-group">
-                            <label>Fecha</label>
-                            <input type="date" class="form-control form-control-sm" id="fecha" />
-                        </div>
-                    </div>
-                </div>
-<<<<<<< HEAD
-
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="form-group">
-                            <label>Facultad</label>
-                            <select id="facultad" class="form-control"></select>
-                        </div>
-                    </div>
-=======
-                <div class="row">
->>>>>>> d10db13464fc6568da93c45dc74596be48baf766
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="form-group">
                             <label>Encargado</label>
                             <input type="text" class="form-control form-control-sm" placeholder="encargado" id="encargado" />
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="table-responsive mt-2">
-                            <table class="table table-sm table-bordered table-hover fixed_header">
+                            <table class="table table-sm table-bordered table-hover ">
                                 <thead>
                                     <tr>
                                         <th>Facultades</th>
-                                        <th><i class="nav-icon fas fa-wrench"></i></th>
+                                        <th>Opciones</th>
                                     </tr>
                                 </thead>
                                 <tbody id="tfacultad"></tbody>
@@ -120,56 +106,30 @@
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-12">
-                        <button type="button" class="btn btn-success" id="btnfacultadadd">Agregar</button>
+                        <button type="button" class="btn btn-info btn-sm" id="btnfacultadadd">+</button>
                     </div>
-                </div>
-                <div class="row">
-<<<<<<< HEAD
-=======
-
->>>>>>> d10db13464fc6568da93c45dc74596be48baf766
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="table-responsive">
-                            <table class="table table-sm table-bordered table-hover fixed_header">
+                            <table class="table table-sm table-bordered table-hover ">
                                 <thead>
-<<<<<<< HEAD
-                                    <th>Nombre de Materia</th>
-                                    <th>Opciones</th>
-=======
                                     <tr>
                                         <th>Carreras</th>
                                         <th><i class="nav-icon fas fa-wrench"></i></th>
                                     </tr>
->>>>>>> d10db13464fc6568da93c45dc74596be48baf766
                                 </thead>
                                 <tbody id="tcarreras"></tbody>
                             </table>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-12">
-<<<<<<< HEAD
-                        <button type="button" class="btn btn-info" id="btnmateriadd">Agregar</button>
+                        <button type="button" class="btn btn-info btn-sm" id="btncarreradd">+</button>
                     </div>
+                </div>
+                <div class="row">
+                    
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="table-responsive">
-                            <table class="table table-sm table-bordered table-hover">
-                                <thead>
-                                    <th>Carreras</th>
-                                    <th>Opciones</th>
-                                </thead>
-                                <tbody id="tcarreras"></tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-12">
-                        <button type="button" class="btn btn-info" id="btncarreraadd">Agregar</button>
-=======
-                        <button type="button" class="btn btn-success" id="btncarreradd">Agregar</button>
->>>>>>> d10db13464fc6568da93c45dc74596be48baf766
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <div class="table-responsive">
-                            <table class="table table-sm table-bordered table-hover fixed_header">
+                            <table class="table table-sm table-bordered table-hover ">
                                 <thead>
                                     <tr>
                                         <th>Materias</th>
@@ -181,7 +141,7 @@
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-12">
-                        <button type="button" class="btn btn-success" id="btnmateriadd">Agregar</button>
+                        <button type="button" class="btn btn-info btn-sm" id="btnmateriadd">+</button>
                     </div>
                 </div>
 
@@ -190,6 +150,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <label>Detalle de boleta</label>
+                        <button class="btn btn-success btn-sm float-right" id="btninventario" >+</button>
                         <div class="table-responsive">
                             <table class="table table-bordered table-sm">
                                 <thead>
@@ -214,66 +175,6 @@
     </div>
 </div>
 
-<<<<<<< HEAD
-<div class="modal" id="modalmateria" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Materias</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="responsive-table">
-            <table class="table table-bordered table-hover table-sm">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Materia</th>
-                    </tr>
-                </thead>
-                <tbody id="tblmateriaselect" ></tbody>
-            </table>
-        </div>
-      </div>
-     
-    </div>
-  </div>
-</div>
-
-<div class="modal" id="modalcarrera" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Carreras</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="responsive-table">
-            <table class="table table-bordered table-hover table-sm">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Nombre de Carrera</th>
-                    </tr>
-                </thead>
-                <tbody id="tblcarreraselect" ></tbody>
-            </table>
-        </div>
-      </div>
-     
-    </div>
-  </div>
-</div>
-
-
-@section scripts{
-    <script src="~/js/custom/boleta.js?v=1"></script>
-  
-=======
 <div class="modal fade" id="modaldata" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -331,16 +232,19 @@
                     </div>
                 </div>
             </div>
-
+            <div class="modal-footer">
+                <input type="search" class="form-control" id="inpbuscar" placeholder="Buscar Material" />
+            </div>
         </div>
     </div>
 </div>
 
+
+
 @section scripts{
     <script src="~/js/datatables.min.js"></script>
     <script src="~/lib/axios/axios.js"></script>
-    <script src="~/js/custom/boleta.js"></script>
+    <script src="~/js/custom/boleta.js?v=2"></script>
 
 
->>>>>>> d10db13464fc6568da93c45dc74596be48baf766
 }

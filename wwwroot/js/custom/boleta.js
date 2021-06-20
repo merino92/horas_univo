@@ -1,16 +1,4 @@
 const btnuevo = document.getElementById('btnew')
-<<<<<<< HEAD
-const btnmateria =document.getElementById('btnmateriadd')
-const btncarrera = document.getElementById('btncarreraadd')
-const tablaCarreras =document.getElementById('tcarreras')
-const tablaMaterias = document.getElementById('tmaterias')
-const tablaMateriasAdd = document.getElementById('tblmateriaselect')
-const tablaCarrerasAdd = document.getElementById('tblcarreraselect')
-const modalMateria=$('#modalmateria')
-const modalCarrera=$('#modalcarrera')
-let boleta ={
-    materias:[]
-=======
 const modalboleta = $('#modal')
 const modalbuscar = $('#modaldata')
 const btnaddfacultad = document.getElementById('btnfacultadadd')
@@ -22,7 +10,10 @@ const tablamateria = document.getElementById('tmateria')
 const codigoboleta = document.getElementById('nboleta')
 const fechaboleta = document.getElementById('fecha')
 const encargado = document.getElementById('encargado')
+const modalInventario = $('#modalinventario')
+const btnInventario = document.getElementById('btninventario')
 const tablaboletadetalle = document.getElementById('cuerpo')
+const tablaInventario = document.getElementById('inventariotbl')
 const boleta = {
     fecha: null,
     encargado: null,
@@ -30,7 +21,6 @@ const boleta = {
     carrera: [],
     materia: [],
     detalle:[]
->>>>>>> d10db13464fc6568da93c45dc74596be48baf766
 }
 
 const clean = () => {
@@ -42,120 +32,6 @@ const clean = () => {
     tablaboletadetalle.innerHTML=''
 }
 
-<<<<<<< HEAD
-const statusCode = (request,mensaje)=>{
-    let response =true
-    switch(request.status){
-        case 200:{
-            response.response=true
-            break
-        }
-        case 404:{
-            Swal.fire({
-                icon:'warning',
-                title:'Advertencia',
-                text:`recurso ${mensaje} no encontrado`
-            })
-            response.response=false
-            break
-        }
-        case 500:{
-            Swal.fire({
-                icon:'warning',
-                title:'Advertencia',
-                text:'ha ocurrido un error al obtener el recurso'
-            })
-            response.response=false
-            break
-        }
-        case 400:{
-            Swal.fire({
-                icon:'warning',
-                title:'Advertencia',
-                text:`${mensaje} parametros invalidos`
-            })
-            response.response=false
-            break
-            
-        }
-        default:{
-            Swal.fire({
-                icon:'warning',
-                title:'Advertencia',
-                text:'ha ocurrido un error inesperado'
-            })
-            response.response=false
-            break
-        }
-    }
-    return response
-}//procesa el response
-
-const quitarMateria =(id)=>{
-    let nmateria = boleta.materias.map(e=>{
-        return e!=id
-    })
-    boleta.materias=nmateria
-    document.getElementById(`m${id}`).remove()
-}
-
-const agregarMateria=(id,nombre)=>{
-    let respuesta =boleta.materias.filter(m=>m===id)
-    if(respuesta.length ===0){
-        boleta.materias.push(id)
-        let tr=document.createElement('tr')
-            tr.id=`m${id}`
-            tr.innerHTML=`
-            <td>${nombre}</td>
-            <td><button type="button" class="btn btn-danger btn-sm "
-            onClick="quitarMateria(${id})">X</button></td>`
-        tablaMaterias.appendChild(tr)
-    }
-    modalMateria.modal('hide')
-   
-    //prevent.preventDefault()
-}
-
-
-const armarTablaMaterias =(materias)=>{
-    //tablaMaterias.innerHTML=''
-    let contador=1
-    materias.forEach(m=>{
-        let tr=document.createElement('tr')
-        tr.onclick =(e)=>{
-            e.preventDefault()
-            agregarMateria(m.id,m.materia)
-        }  
-        tr.innerHTML=`<td>${contador}</td>
-        <td>${m.materia}</td>`
-        tablaMateriasAdd.appendChild(tr)
-    })
-}
-
-const listarMaterias = async ()=>{
-    try {
-        const request = await fetch('/Materia/list')
-        let response = statusCode(request,'materias')
-        if(response){
-            let data = await request.json()
-            let materias = data.value 
-            armarTablaMaterias(materias)
-        }
-
-    } catch (error) {
-        Swal.fire({
-            icon:'warning',
-            title:'Algo ha ocurrido',
-            text:error
-        })
-    }
-}
-
-
-$(document).ready(e=>{
-    listarMaterias()
-    btnuevo.onclick = ()=>{
-=======
 const Quitar = (id,numero) => 
 {  
     switch (numero) {
@@ -189,6 +65,21 @@ const Quitar = (id,numero) =>
     
 }
 
+const materialAdd =(id,codigo,nombre)=>{
+    let existe = boleta.detalle.filter(i=>i===id)
+    if(existe.length===0){
+        boleta.detalle.push(id)
+        let tr =document.createElement('tr')
+        tr.id=`m${id}`
+        tr.innerHTML=`<td scope="col"><input type="number" width="50" class="form-control form-control-sm" id="c${id}" value="1"/></td>
+        <td>${codigo}</td>
+        <td>${nombre}</td>
+        <td><button type="button" class="btn btn-sm btn-danger" onClick="quitarItem(${id})">X</button></td>`
+        tablaboletadetalle.appendChild(tr)
+    }
+    modalInventario.modal('hide')
+
+}
 
 const AgregarFacultad = (id, nombre) => {
     if (!boleta.facultad.includes(id)) {
@@ -297,6 +188,40 @@ const listarMaterias= async () => {
     } catch (e) {
         console.log(e)
     }
+} 
+
+const listarInventario =async ()=>{
+    try {
+        const request = await fetch('/Producto/list')
+        switch(request.status){
+            case 200:{
+                let response = await request.json()
+                response.value.forEach(i=>{
+                    let tr = document.createElement('tr')
+                    tr.onclick =(prevent)=>{
+                        prevent.preventDefault()
+                        materialAdd(i.id,i.codigo,i.nombre)
+                        
+                    }
+                    tr.innerHTML=`<td>${i.codigo}</td>
+                    <td>${i.nombre}</td>
+                    <td>${i.existencia}</td>`
+                    tablaInventario.appendChild(tr)
+                })
+                break
+            }
+            default:{
+                Swal.fire({
+                    icon:'warning',
+                    title:'Advertencia',
+                    text:'Error al obtener el inventario'
+                })
+            }
+            
+        }
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 
@@ -304,7 +229,6 @@ const funciones = () => {
    
     btnuevo.onclick = () => {
         clean()
->>>>>>> d10db13464fc6568da93c45dc74596be48baf766
         $('#modal').modal('show')
     } 
 
@@ -316,20 +240,18 @@ const funciones = () => {
         listarCarreras()
     }
 
-<<<<<<< HEAD
-    btnmateria.onclick =()=>{
-        modalMateria.modal('show')
-    }
-=======
     btnmateriadd.onclick = () => {
         listarMaterias()
     } 
 
+    btnInventario.onclick =()=>{
+        modalInventario.modal('show')
+    }
 
 }
 
 
 $(document).ready(e => {
+    listarInventario()
     funciones()
->>>>>>> d10db13464fc6568da93c45dc74596be48baf766
 })
