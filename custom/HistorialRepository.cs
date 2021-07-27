@@ -20,7 +20,7 @@ namespace univo
         public List<MovimientoJson> filtrarFecha(string fecha,int idproducto){
             var f=DateTime.Parse(fecha);
             var datos = context.movimientos.Include(u=>u.usuarios).
-                        Where(m=>m.fecha.Date==f).ToList();
+                        Where(m=>m.fecha.Date==f && m.idproducto ==idproducto ).ToList();
             List<MovimientoJson> mo = new List<MovimientoJson>();
             if(datos != null){
                 foreach(Movimientos m in datos){

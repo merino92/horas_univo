@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using univo.data;
 using univo.JsonModel.boleta;
@@ -13,12 +14,39 @@ namespace univo.custom
             context = ct;
         } 
 
-        private string createCodigo(DateTime fecha,int boletaid,int idusuario){
-            string format = fecha.ToString("yyyyMMddHHmmss");
-            return (Convert.ToString(boletaid)+format);
+        private string createCodigo(){
+            string key="";
+            int i=context.boletas.Count();
+            while(true){
+                i++;
+                string codigo="BOL"+i.ToString();
+                if(context.boletas.Where(b=>b.codigo==codigo).Count()<=0){
+                    key=codigo;
+                    break;
+                }
+            }
+           return key;
         }//retorna el codigo autogenerado
-        
-        public int create(boletajson bo,int idusuario){
+         
+        private  int validateExistencias (int idproducto,int cantidad){
+            var item = context.productos.Find(idproducto);
+            if(item!=null){
+                int existencia = item.existencia;
+                if(cantidad <=0){
+                    cantidad =0;
+                }
+                int resultado = existencia - cantidad;
+                if(resultado <0){
+                    return -1;
+                }else{
+                    return 0;
+                }
+            }else{
+                return -2;
+            }
+        }
+        public Dictionary<string,string> create(boletajson bo,int idusuario){
+            var response = new Dictionary<string,string>();
             try{
                 DateTime fecha = DateTime.Now;
                 using(var transaccion=context.Database.BeginTransaction()){
@@ -27,7 +55,7 @@ namespace univo.custom
                         codigo="",
                         idusuario=idusuario,
                         encargado=bo.encargado,
-                        detalle=bo.detalle,
+                        detalle="",
                         devuelto=false,
                         borrado=false,
                         parcial= false
@@ -35,7 +63,7 @@ namespace univo.custom
                     context.boletas.Add(boleta);
                     context.SaveChanges();
                     //creamos la cabezera de la boleta
-                    boleta.codigo = createCodigo(fecha, boleta.id, boleta.idusuario);
+                    boleta.codigo = createCodigo();
                     context.SaveChanges();
                     //agregamos el codigo de la boleta
                     foreach(int row in bo.carreras)
@@ -62,8 +90,17 @@ namespace univo.custom
                     }
                     //agregamos las materias de la boletas
 
-                    foreach (boletadetallejson row in bo.productos)
-                    {
+                    foreach (boletadetallejson row in bo.detalle)
+                    {   int validacion=validateExistencias(row.idproducto,row.cantidad);
+                        if(validacion!=0){
+                            if(validacion == -2){
+                                throw new Exception("Error al obtener la existencia del producto");
+                            }else{
+                                var p = context.productos.Find(row.idproducto);
+                                throw new Exception($"Existencias Insuficientes para el producto {p.nombre}");
+                            }
+                        }//valida si la existencia no queda en negativo
+
                         context.boletasdetalles.Add(new BoletasDetalles
                         {
                             iddetalle=boleta.id,
@@ -90,15 +127,20 @@ namespace univo.custom
                         //actualizamos el kardex
                     }//insertamos el detalle de la boleta
                     transaccion.Commit();
-                    return boleta.id;
+                    response.Add("validation","True");
+                    response.Add("data",boleta.codigo);
+
+                    return response;
                 }
             }catch(Exception e){
-                throw new Exception(e.Message);
+                response.Add("validation","False");
+                response.Add("data",e.Message);
+                return response;
             }
         }
 
-        public int delete(int idboleta)
-        {
+        public Dictionary<string,string> delete(int idboleta)
+        {   var response = new Dictionary<string,string>();
             try
             {
 
@@ -128,17 +170,15 @@ namespace univo.custom
                         }
                         context.SaveChanges();
                         transaccion.Commit();
-                        return 0;
+                        response.Add("validate","True");
+                        return response;
                     }
                     else
                     {
-                        return 1;
+                       response.Add("validate","False");
+                       response.Add("message","No se ha encontrado la boleta");
+                       return response;
                     }
-
-
-
-
-
                 };
 
 

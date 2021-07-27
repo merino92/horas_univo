@@ -62,7 +62,7 @@ const historial= async (id,codigo,nombre)=>{
     let fecha=moment().format('YYYY-MM-DD');
     $('#fi').val(fecha);
     $('#ff').val(fecha);
-    $('#modal').modal('show'); 
+   
     try{
         let datos={
             params:{
@@ -78,6 +78,7 @@ const historial= async (id,codigo,nombre)=>{
             throw Error('Error al obtener la informacion intenta nuevamente');
         }
         armarResultados(respuesta.data.value);
+        $('#modal').modal('show'); 
     }catch(error){
         console.log(error);
     }

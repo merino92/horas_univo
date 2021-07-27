@@ -27,20 +27,7 @@ namespace univo.Controllers
             return View();
         } 
 
-        private string generateCode(){
-            string key="";
-            int i=context.boletas.Count();
-            while(true){
-                i++;
-                string codigo="BOL"+i.ToString();
-                if(context.boletas.Where(b=>b.codigo==codigo).Count()<=0){
-                    key=codigo;
-                    break;
-                }
-            }
-           return key;
-
-        }//generacion de codigo automatico
+       
 
         [HttpGet]
         public IActionResult list(){
@@ -94,30 +81,61 @@ namespace univo.Controllers
         }
 
         [HttpPost]
-        public IActionResult create(boletajson boleta){
+        public IActionResult create([FromBody]boletajson boleta){
+            var item = new Dictionary<string,string>();
             try
             {  
-                //idusuario= (int)HttpContext.Session.GetInt32("idusuario");
-                string cboleta= bo.create(boleta,1);
-                if(cboleta.Length>0){
-                    var item = new Dictionary<string,string>();
-                    item.Add("key",cboleta);
-                    return StatusCode(StatusCodes.Status201Created,item);
+                if(boleta.carreras.Count()>0 && boleta.materias.Count()>0 
+                    && boleta.facultad.Count()>0 && boleta.detalle.Count()>0
+                    && boleta.encargado.Length > 0){
+                    var cboleta = bo.create(boleta,1);
+                    if(Convert.ToBoolean(cboleta["validation"])){
+                        item.Add("key",cboleta["data"]);
+                        return StatusCode(StatusCodes.Status201Created,item);
+                    }else{
+                        item.Add("message",cboleta["data"]);
+                        return StatusCode(StatusCodes.Status400BadRequest,item);
+                    }
                 }else{
-                     var item = new Dictionary<string,string>();
-                    item.Add("message","error al crear la boleta");
+                    
+                    item.Add("message","Parametros invalidos");
                     return StatusCode(StatusCodes.Status400BadRequest,item);
                 }
+                //idusuario= (int)HttpContext.Session.GetInt32("idusuario");
+               
             }
             catch (System.Exception e)
             {
-                
-                var item = new Dictionary<string,string>();
                     item.Add("message",e.Message);
                     return StatusCode(StatusCodes.Status500InternalServerError,item);
             }
         }
         
+        [HttpDelete]
+        public IActionResult delete([FromQuery(Name="idboleta")]int idboleta){
+            var request = new Dictionary<string,string>();
+            try
+            {
+                if(idboleta>0){
+                    var respuesta = bo.delete(idboleta);
+                    if(Convert.ToBoolean(respuesta["validate"])){
+                        return StatusCode(StatusCodes.Status200OK); 
+                    }else{
+                        return StatusCode(StatusCodes.Status400BadRequest,Json(respuesta["message"]));
+                    }
+                }else{
+                    request.Add("message","Parametro Invalido");
+                    return StatusCode(StatusCodes.Status400BadRequest,Json(request));
+                }
+            }
+            catch (Exception e)
+            {
+                request.Add("message",e.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError,request);
+                
+            }
+            
+        }
 
     }
 }

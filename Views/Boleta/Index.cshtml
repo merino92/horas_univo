@@ -1,6 +1,7 @@
 ﻿
 @section css{
     <link rel="stylesheet" href="~/css/tablaslide.css">
+    <link rel="stylesheet" href="~/css/input.css">
 }
 
 @section titulo{
@@ -62,7 +63,7 @@
 
 
 <div class="modal fade " id="modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="titulo">Nuevo Nueva Boleta</h5>
@@ -71,100 +72,114 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="row">
-                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                        <div class="form-group">
-                            <label>Fecha</label>
-                            <input type="date" class="form-control form-control-sm" id="fecha" />
+               <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Detalle General</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" id="materia-tab" data-toggle="tab" href="#materia" role="tab" aria-controls="materia" aria-selected="false">Materias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Facultad y Carreras</a>
+                    </li>
+                   
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane p-2 fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row ">
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Fecha</label>
+                                    <input type="date" class="form-control form-control-sm" id="fecha" />
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>N° de Boleta</label>
+                                    <h5 class="text-dark" id="nboleta"></h5>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Encargado</label>
+                                    <input type="text" class="form-control form-control-sm" placeholder="encargado" id="encargado" />
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="row">
+                            
+                            
+                            <div class="col-12 table-responsive">
+                                 <label>Detalle de boleta</label>
+                                <button class="btn btn-success btn-sm mb-2 float-right" id="btninventario" >+</button>
+                                <table class="table table-bordered table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Codigo</th>
+                                            <th>Nombre del Material</th>
+                                            <th>Cantidad</th>
+                                            <th>Opciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cuerpo"></tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                        <div class="form-group">
-                            <label>N° de Boleta</label>
-                            <h5 class="text-dark" id="nboleta"></h5>
+                     <div class="tab-pane fade p-2" id="materia" role="tabpanel" aria-labelledby="materia-tab" >
+                         <div class="row justify-content-center">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                               
+                                <div class="table-responsive"> 
+                                     <button type="button" class="btn btn-info float-right mb-2 btn-sm" id="btnmateriadd">+</button>
+                                    <table class="table table-sm table-bordered table-hover ">
+                                        <thead>
+                                            <tr>
+                                                <th>Materias</th>
+                                                <th><i class="nav-icon fas fa-wrench"></i></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tmateria"></tbody>
+                                    </table>
+                                </div>
+                                
+                            </div>
                         </div>
                     </div>
-                   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="form-group">
-                            <label>Encargado</label>
-                            <input type="text" class="form-control form-control-sm" placeholder="encargado" id="encargado" />
+                    <div class="tab-pane fade p-2" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                 <button type="button" class="btn btn-info btn-sm" id="btnfacultadadd">+</button>
+                                <div class="table-responsive ">
+                                    <table class="table table-sm table-bordered table-hover ">
+                                        <thead>
+                                            <tr>
+                                                <th>Facultades</th>
+                                                <th>Opciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tfacultad"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                 <button type="button" class="btn btn-info btn-sm" id="btncarreradd">+</button>
+                                 <div class="table-responsive">
+                                    <table class="table table-sm table-bordered table-hover ">
+                                        <thead>
+                                            <tr>
+                                                <th>Carreras</th>
+                                                <th><i class="nav-icon fas fa-wrench"></i></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tcarreras"></tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <div class="table-responsive mt-2">
-                            <table class="table table-sm table-bordered table-hover ">
-                                <thead>
-                                    <tr>
-                                        <th>Facultades</th>
-                                        <th>Opciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tfacultad"></tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-12">
-                        <button type="button" class="btn btn-info btn-sm" id="btnfacultadadd">+</button>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <div class="table-responsive">
-                            <table class="table table-sm table-bordered table-hover ">
-                                <thead>
-                                    <tr>
-                                        <th>Carreras</th>
-                                        <th><i class="nav-icon fas fa-wrench"></i></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tcarreras"></tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-12">
-                        <button type="button" class="btn btn-info btn-sm" id="btncarreradd">+</button>
-                    </div>
-                </div>
-                <div class="row">
-                    
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <div class="table-responsive">
-                            <table class="table table-sm table-bordered table-hover ">
-                                <thead>
-                                    <tr>
-                                        <th>Materias</th>
-                                        <th><i class="nav-icon fas fa-wrench"></i></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tmateria"></tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-12">
-                        <button type="button" class="btn btn-info btn-sm" id="btnmateriadd">+</button>
-                    </div>
-                </div>
-
-               
-
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                        <label>Detalle de boleta</label>
-                        <button class="btn btn-success btn-sm float-right" id="btninventario" >+</button>
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-sm">
-                                <thead>
-                                    <tr>
-                                        <th class="col">Cantidad</th>
-                                        <th>Codigo</th>
-                                        <th>Nombre del Material</th>
-                                        <th>Opciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="cuerpo"></tbody>
-                            </table>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
             <div class="modal-footer">
@@ -243,7 +258,8 @@
 
 @section scripts{
     <script src="~/js/datatables.min.js"></script>
-    <script src="~/js/jspdf"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
     <script src="~/lib/axios/axios.js"></script>
     <script src="~/js/custom/boleta.js?v=2"></script>
 
